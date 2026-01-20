@@ -47,7 +47,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex">
       {bands.map((band) => (
         <CardBand
           key={band.name}
@@ -57,7 +57,7 @@ const Home = () => {
           imageUrl={band.imgUrl}
         />
       ))}
-    </>
+    </div>
   );
 };
 

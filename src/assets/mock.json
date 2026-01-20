@@ -1,0 +1,144 @@
+{
+  "artists": {
+    "artist": [
+      {
+        "name": "Black Sabbath",
+        "mbid": "5182c1d9-c7d2-4dad-afa0-ccfeada921a8",
+        "url": "https://www.last.fm/music/Black+Sabbath",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/bue9rg1674179059.jpg",
+        "country": "United Kingdom",
+        "genre": "Heavy Metal",
+        "@attr": {
+          "rank": "1"
+        }
+      },
+      {
+        "name": "Iron Maiden",
+        "mbid": "ca891d65-d9b0-4258-89f7-e6ba29d83767",
+        "url": "https://www.last.fm/music/Iron+Maiden",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/hl12xy1621773875.jpg",
+        "country": "United Kingdom",
+        "genre": "Heavy Metal",
+        "@attr": {
+          "rank": "2"
+        }
+      },
+      {
+        "name": "Metallica",
+        "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+        "url": "https://www.last.fm/music/Metallica",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/qyuqvy1375623610.jpg",
+        "country": "United States",
+        "genre": "Thrash Metal",
+        "@attr": {
+          "rank": "3"
+        }
+      },
+      {
+        "name": "Ozzy Osbourne",
+        "mbid": "8aa5b65a-5b3c-4029-92bf-47a544356934",
+        "url": "https://www.last.fm/music/Ozzy+Osbourne",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/osbourne-ozzy-4fd0a787e0707.jpg",
+        "country": "United Kingdom",
+        "genre": "Heavy Metal",
+        "@attr": {
+          "rank": "4"
+        }
+      },
+      {
+        "name": "Ghost",
+        "mbid": "2bcf2e02-5bc3-4c76-bf76-41126cb11444",
+        "url": "https://www.last.fm/music/Ghost",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/gnmu5f1622640483.jpg",
+        "country": "Sweden",
+        "genre": "Hard Rock",
+        "@attr": {
+          "rank": "5"
+        }
+      },
+      {
+        "name": "Judas Priest",
+        "mbid": "6b335658-22c8-485d-93de-0bc29a1d0349",
+        "url": "https://www.last.fm/music/Judas+Priest",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/ysqvqp1366309271.jpg",
+        "country": "United Kingdom",
+        "genre": "Heavy Metal",
+        "@attr": {
+          "rank": "6"
+        }
+      },
+      {
+        "name": "Dio",
+        "mbid": "c55193fb-f5d2-4839-a263-4c044fca1456",
+        "url": "https://www.last.fm/music/Dio",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/ftm5ld1699463004.jpg",
+        "country": "United Kingdom",
+        "genre": "Heavy Metal",
+        "@attr": {
+          "rank": "7"
+        }
+      },
+      {
+        "name": "Motörhead",
+        "mbid": "57961a97-3796-4bf7-9f02-a985a8979ae9",
+        "url": "https://www.last.fm/music/Mot%C3%B6rhead",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/uvsrys1342503947.jpg",
+        "country": "United Kingdom",
+        "genre": "Heavy Metal",
+        "@attr": {
+          "rank": "8"
+        }
+      },
+      {
+        "name": "Megadeth",
+        "mbid": "a9044915-8be3-4c7e-b11f-9e2d2ea0a91e",
+        "url": "https://www.last.fm/music/Megadeth",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/tusqxr1549701229.jpg",
+        "country": "United States",
+        "genre": "Thrash Metal",
+        "@attr": {
+          "rank": "9"
+        }
+      },
+      {
+        "name": "Black Label Society",
+        "mbid": "a8e935c6-3fcc-414c-900c-77e8170e7e7c",
+        "url": "https://www.last.fm/music/Black+Label+Society",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/black-label-society-4fde53d6c80cd.jpg",
+        "country": "United States",
+        "genre": "Heavy Metal",
+        "@attr": {
+          "rank": "11"
+        }
+      },
+      {
+        "name": "Mötley Crüe",
+        "mbid": "26f07661-e115-471d-a930-206f5c89d17c",
+        "url": "https://www.last.fm/music/M%C3%B6tley+Cr%C3%BCe",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/tutyyu1386458060.jpg",
+        "country": "United States",
+        "genre": "Glam Metal",
+        "@attr": {
+          "rank": "12"
+        }
+      },
+      {
+        "name": "Slipknot",
+        "mbid": "a466c2a2-6517-42fb-a160-1087c3bafd9f",
+        "url": "https://www.last.fm/music/Slipknot",
+        "image": "https://r2.theaudiodb.com/images/media/artist/thumb/uxvury1364467771.jpg",
+        "country": "United States",
+        "genre": "Nu Metal",
+        "@attr": {
+          "rank": "13"
+        }
+      }
+    ],
+    "@attr": {
+      "page": "1",
+      "perPage": "50",
+      "totalPages": "1",
+      "total": "12"
+    }
+  }
+}

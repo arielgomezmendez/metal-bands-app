@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CardBand from "../components/CardBand";
-import { getMetalBandsFromLastFm } from "../services/lastfm.service";
-import { getMetalBandFromAudioDB } from "../services/audiodb.service";
+import HeroSection from "../components/HeroSection";
+import Header from "../components/Header";
+
+//import { getMetalBandsFromLastFm } from "../services/lastfm.service";
+//import { getMetalBandFromAudioDB } from "../services/audiodb.service";
 
 type BandType = {
   name: string;
@@ -36,28 +39,37 @@ const Home = () => {
         (band: any) => ({
           name: band.name,
           country: band.country,
-          genre: band.genre, 
+          genre: band.genre,
           imgUrl: band.image,
         }),
       );
       setBands(bandsFromMock);
       //console.log(bandsFromMock);
-    }
+    };
     fetchMockBands();
   }, []);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-6">
-      {bands.map((band) => (
-        <CardBand
-          key={band.name}
-          name={band.name}
-          country={band.country}
-          genre={band.genre}
-          imageUrl={band.imgUrl}
-        />
-      ))}
-    </div>
+    <>
+      <body>
+        <Header />
+        <HeroSection />
+        <main>
+          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-6">
+            {bands.map((band) => (
+              <CardBand
+                key={band.name}
+                name={band.name}
+                country={band.country}
+                genre={band.genre}
+                imageUrl={band.imgUrl}
+              />
+            ))}
+          </section>
+        </main>
+        <footer></footer>
+      </body>
+    </>
   );
 };
 

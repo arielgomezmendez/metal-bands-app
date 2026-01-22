@@ -67,7 +67,11 @@ const Home = () => {
             ))}
           </section>
         </main>
-        <footer></footer>
+        <footer>
+          <p>
+            <small>© 2026 Metal Archives. All rights reserved.</small>
+          </p>
+        </footer>
       </body>
     </>
   );

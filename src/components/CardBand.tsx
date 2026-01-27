@@ -8,6 +8,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { Link as RouterLink} from "react-router-dom";
 
 type CardBandProps = {
   name?: string;
@@ -42,6 +43,8 @@ const CardBand = (props: CardBandProps) => {
         </CardActionArea>
         <CardActions style={{ backgroundColor: "#1A1A1A" }}>
           <Button
+           component={RouterLink}
+           to="/band/"
             sx={{
               marginLeft: "5%",
               marginBottom: "5%",

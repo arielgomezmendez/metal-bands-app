@@ -4,13 +4,15 @@ import "./App.css";
 //import ShowBands from "./components/ShowBands";
 import Home from "./pages/Home";
 import BandDetails from "./pages/BandDetails";
+import Layout from "./components/Layout";
 
 function App() {
-
   return (
     <Routes>
-      <Route path="/" element={<Home/>}></Route>
-      <Route path="/band" element={<BandDetails/>}></Route>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />}></Route>
+        <Route path="/band" element={<BandDetails />}></Route>
+      </Route>
     </Routes>
   );
 }

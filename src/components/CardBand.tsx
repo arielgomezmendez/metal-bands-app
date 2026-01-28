@@ -44,7 +44,7 @@ const CardBand = (props: CardBandProps) => {
         <CardActions style={{ backgroundColor: "#1A1A1A" }}>
           <Button
            component={RouterLink}
-           to="/band/"
+           to={`/band/${encodeURIComponent(name ? name : "")}`}
             sx={{
               marginLeft: "5%",
               marginBottom: "5%",

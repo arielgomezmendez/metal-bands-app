@@ -26,12 +26,6 @@ const Home = () => {
     };
     fetchBandsLastFm();*/
 
-    /*const fetchBandsAudioDb = async () => {
-      const fectchBnadsAudioDb = await getMetalBandFromAudioDB();
-      console.log(fectchBnadsAudioDb.artists[0].strArtistThumb);  
-    };
-    fetchBandsAudioDb();*/
-
     //Using mock data
     const fetchMockBands = async () => {
       const mockData = await import("../assets/mock.json");

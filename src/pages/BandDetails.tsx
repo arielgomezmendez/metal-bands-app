@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getMetalBandDiscographyFromAudioDB, getMetalBandFromAudioDB } from "../services/audiodb.service";
 import { useParams } from "react-router-dom";
+import BandInfo from "../components/BandInfo";
 
 const BandDetails = () => {
   const { name } = useParams();
@@ -10,13 +11,14 @@ const BandDetails = () => {
   useEffect(() => {
     const fetchBandsAudioDb = async () => {
       const bandsAudioDb = await getMetalBandFromAudioDB(name ? name : "");
-      //console.log(fectchBnadsAudioDb.artists);
+      //console.log(bandsAudioDb.artists[0]);
       setBandDetails(bandsAudioDb.artists[0]);
     };
+    //console.log("Banda: ",bandDetails);
     fetchBandsAudioDb();
     const fetchBandDiscographyAudioDb = async () => {
       const bandDiscography = await getMetalBandDiscographyFromAudioDB(name ? name : "");
-      console.log("Discografia: ",bandDiscography);
+      //console.log("Discografia: ",bandDiscography);
       setBandDiscography(bandDiscography);
     };    
     fetchBandDiscographyAudioDb();
@@ -27,7 +29,7 @@ const BandDetails = () => {
 
   return (
     <>
-      <h1 style={{ color: "white" }}>Banda</h1>
+      <BandInfo bandDetails={bandDetails}/>
     </>
   );
 };

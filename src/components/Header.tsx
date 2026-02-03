@@ -1,9 +1,8 @@
-import React from "react";
 
 const Header = () => {
   return (
     <>
-      <header className="flex flex-row justify-between items-center px-4 py-3" style={{borderBottom:"#8A8A8A solid 0.1px"}}>
+      <header className="flex flex-row justify-between items-center px-4 py-3" style={{borderBottom:"#313231 solid 0.1px"}}>
         <div className="header-left flex flex-row" style={{ color: "#F5F5F5" }}>
           <a></a>
           <p style={{ fontWeight: "bold", fontSize: "1.2rem" }}>Metal Bands</p>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getMetalBandDiscographyFromAudioDB, getMetalBandFromAudioDB } from "../services/audiodb.service";
 import { useParams } from "react-router-dom";
 import BandInfo from "../components/BandInfo";
+import BandData from "../components/BandData";
 
 const BandDetails = () => {
   const { name } = useParams();
@@ -30,6 +31,7 @@ const BandDetails = () => {
   return (
     <>
       <BandInfo bandDetails={bandDetails}/>
+      <BandData/>
     </>
   );
 };

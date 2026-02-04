@@ -1,4 +1,4 @@
-import { Typography, Container, Box, Button } from "@mui/material";
+import { Typography, Container, Box, Button, Stack } from "@mui/material";
 
 const BandInfo = (bandDetails: any) => {
   console.log("BandDetails en BandInfo: ", bandDetails?.bandDetails);
@@ -39,30 +39,30 @@ const BandInfo = (bandDetails: any) => {
           sx={{ alignItems: "flex-start" }}
           disableGutters
         >
-          <Box className="flex flex-col" sx={{ alignItems: "flex-start" }}>
+          <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
             <Typography color="#8A8A8A" component="p">
               Genre
             </Typography>
             <Typography color="#F5F5F5" component="p">
               {bandDetails?.bandDetails?.strGenre}
             </Typography>
-          </Box>
-          <Box className="flex flex-col" sx={{ alignItems: "flex-start" }}>
+          </Stack>
+          <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
             <Typography color="#8A8A8A" component="p">
               Country
             </Typography>
             <Typography color="#F5F5F5" component="p">
               {bandDetails?.bandDetails?.strCountry}
             </Typography>
-          </Box>
-          <Box className="flex flex-col" sx={{ alignItems: "flex-start" }}>
+          </Stack>
+          <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
             <Typography color="#8A8A8A" component="p">
               Fromed
             </Typography>
             <Typography color="#F5F5F5" component="p">
               {bandDetails?.bandDetails?.intFormedYear}{" "}
             </Typography>
-          </Box>
+          </Stack>
         </Container>
         <Box
           aria-label="Button group"

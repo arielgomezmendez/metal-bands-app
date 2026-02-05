@@ -1,7 +1,7 @@
 import { Typography, Container, Box, Button, Stack } from "@mui/material";
 
 const BandInfo = (bandDetails: any) => {
-  console.log("BandDetails en BandInfo: ", bandDetails?.bandDetails);
+  
   return (
     <section className="bandInfo flex flex-row" style={{ marginLeft: "1rem", marginTop: "4rem" }}>
       <picture

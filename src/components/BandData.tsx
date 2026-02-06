@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Skeleton, Stack, Typography } from "@mui/material";
 import type { AlbumType } from "../pages/BandDetails";
 import Album from "./Album";
 
@@ -12,7 +12,6 @@ const BandData = ({ bandDetails, bandDiscography }: BandDataProps) => {
     <>
       <Stack
         className="flex flex-col gap-4"
-       
         sx={{ marginTop: "2rem", marginLeft: "1rem", marginBottom: "4rem" }}
       >
         <Typography
@@ -20,19 +19,30 @@ const BandData = ({ bandDetails, bandDiscography }: BandDataProps) => {
           variant="h5"
           component="h2"
           className="flex flex-col"
-          sx={{ alignItems: "flex-start"}}
+          sx={{ alignItems: "flex-start" }}
         >
           Discography
         </Typography>
-        {bandDiscography.map((album, index) => (
-          <Album
-            key={index}
-            albumName={album?.strAlbum}
-            albumYear={album?.intYearReleased}
-          />
-        ))}
+
+        {bandDiscography.length > 0
+          ? bandDiscography.map((album, index) => (
+              <Album
+                key={index}
+                albumName={album?.strAlbum}
+                albumYear={album?.intYearReleased}
+              />
+            ))
+          : Array.from({ length: 2 }).map((_, index) => (
+              <Skeleton
+                key={index}
+                variant="rectangular"
+                height={88}
+                sx={{ bgcolor: "grey.800", borderRadius: "8px" }}
+              />
+            ))}
+
         <Stack
-        className="mt-6"
+          className="mt-6"
           spacing={2}
           sx={{
             display: "flex",
@@ -43,9 +53,39 @@ const BandData = ({ bandDetails, bandDiscography }: BandDataProps) => {
           <Typography color="#F5F5F5" variant="h5" component="h2">
             Biography
           </Typography>
-          <Typography color="#8A8A8A" component="p" sx={{textAlign: 'justify'}}>
-            {bandDetails?.strBiographyEN}
-          </Typography>
+
+          {bandDetails?.strBiographyEN ? (
+            <Typography
+              color="#8A8A8A"
+              component="p"
+              sx={{ textAlign: "justify" }}
+            >
+              {bandDetails?.strBiographyEN}
+            </Typography>
+          ) : (
+            <>
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", bgcolor: "grey.800", width: "100%" }}
+              />
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", bgcolor: "grey.800", width: "100%" }}
+              />
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", bgcolor: "grey.800", width: "100%" }}
+              />
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", bgcolor: "grey.800", width: "100%" }}
+              />
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", width: "80%", bgcolor: "grey.800" }}
+              />
+            </>
+          )}
         </Stack>
       </Stack>
     </>

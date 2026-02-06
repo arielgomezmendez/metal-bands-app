@@ -1,34 +1,56 @@
 import { Typography, Container, Box, Button, Stack } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 
 const BandInfo = (bandDetails: any) => {
   return (
     <section
       className="bandInfo flex lg:flex-row md:flex-col max-sm:flex-col"
-      style={{ marginLeft: "1rem", marginTop: "4rem"}}
+      style={{ marginLeft: "1rem", marginTop: "4rem" }}
     >
       <picture
         className="bandImg"
-        style={{ width: "44%", height: "44%", borderRadius: "8px" }}
+        style={{ width: "44%", aspectRatio: "1 / 1", borderRadius: "8px" }}
       >
-        <img
-          src={bandDetails.bandDetails?.strArtistThumb}
-          alt="Heavy metal band picture"
-          style={{ maxWidth: "100%", maxHeight: "100%", borderRadius: "8px" }}
-        />
+        {bandDetails?.bandDetails ? (
+          <img
+            src={bandDetails.bandDetails?.strArtistThumb}
+            alt="Heavy metal band picture"
+            style={{ width: "100%", height: "100%", borderRadius: "8px" }}
+          />
+        ) : (
+          <Skeleton
+            variant="rectangular"
+            width="100%"
+            height="100%"
+            sx={{
+              bgcolor: "grey.800",
+              borderRadius: "8px",
+            }}
+          />
+        )}
       </picture>
-      <Box
-        className="bandInfo flex flex-col items-start justify-center lg:gap-8 w-full lg:ml-20 ml-0"
-      >
+
+      <Box className="bandInfo flex flex-col items-start justify-center lg:gap-8 w-full lg:ml-20 ml-0">
         {/* Name of heavy metal band */}
-        <Typography
-          variant="h3"
-          component="h1"
-          className="bandName"
-          color="#F5F5F5"
-          sx={{ fontSize: "3rem" }}
-        >
-          {bandDetails?.bandDetails?.strArtist}
-        </Typography>
+        {bandDetails?.bandDetails?.strArtist ? (
+          <Typography
+            variant="h3"
+            component="h1"
+            className="bandName"
+            color="#F5F5F5"
+            sx={{ fontSize: "3rem" }}
+          >
+            {bandDetails?.bandDetails?.strArtist}
+          </Typography>
+        ) : (
+          <Skeleton
+            className="mt-2 lg:mt-0"
+            variant="rectangular"
+            width={200}
+            height="3rem"
+            sx={{ bgcolor: "grey.800", borderRadius: "8px" }}
+          />
+        )}
 
         {/* Genre, Country, Formed Year of heavy metal band*/}
         <Container
@@ -40,25 +62,48 @@ const BandInfo = (bandDetails: any) => {
             <Typography color="#8A8A8A" component="p">
               Genre
             </Typography>
-            <Typography color="#F5F5F5" component="p">
-              {bandDetails?.bandDetails?.strGenre}
-            </Typography>
+            {bandDetails?.bandDetails?.strGenre ? (
+              <Typography color="#F5F5F5" component="p">
+                {bandDetails?.bandDetails?.strGenre}
+              </Typography>
+            ) : (
+              <Skeleton
+                sx={{ bgcolor: "grey.800", borderRadius: "8px" }}
+                width={100}
+              />
+            )}
           </Stack>
+
           <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
             <Typography color="#8A8A8A" component="p">
               Country
             </Typography>
-            <Typography color="#F5F5F5" component="p">
-              {bandDetails?.bandDetails?.strCountry}
-            </Typography>
+            {bandDetails?.bandDetails?.strCountry ? (
+              <Typography color="#F5F5F5" component="p">
+                {bandDetails?.bandDetails?.strCountry}
+              </Typography>
+            ) : (
+              <Skeleton
+                sx={{ bgcolor: "grey.800", borderRadius: "8px" }}
+                width={160}
+              />
+            )}
           </Stack>
+
           <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
             <Typography color="#8A8A8A" component="p">
               Fromed
             </Typography>
-            <Typography color="#F5F5F5" component="p">
-              {bandDetails?.bandDetails?.intFormedYear}{" "}
-            </Typography>
+            {bandDetails?.bandDetails?.intFormedYear ? (
+              <Typography color="#F5F5F5" component="p">
+                {bandDetails?.bandDetails?.intFormedYear}
+              </Typography>
+            ) : (
+              <Skeleton
+                sx={{ bgcolor: "grey.800", borderRadius: "8px" }}
+                width={42}
+              />
+            )}
           </Stack>
         </Container>
         <Box

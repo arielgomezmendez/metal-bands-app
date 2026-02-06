@@ -1,12 +1,14 @@
 import { Typography, Container, Box, Button, Stack } from "@mui/material";
 
 const BandInfo = (bandDetails: any) => {
-  
   return (
-    <section className="bandInfo flex flex-row" style={{ marginLeft: "1rem", marginTop: "4rem" }}>
+    <section
+      className="bandInfo flex lg:flex-row md:flex-col max-sm:flex-col"
+      style={{ marginLeft: "1rem", marginTop: "4rem"}}
+    >
       <picture
         className="bandImg"
-        style={{ maxWidth: "30%", maxHeight: "30%", borderRadius: "8px" }}
+        style={{ width: "44%", height: "44%", borderRadius: "8px" }}
       >
         <img
           src={bandDetails.bandDetails?.strArtistThumb}
@@ -14,17 +16,10 @@ const BandInfo = (bandDetails: any) => {
           style={{ maxWidth: "100%", maxHeight: "100%", borderRadius: "8px" }}
         />
       </picture>
-      <Container
-        className="bandInfo flex "
-        disableGutters
-        sx={{
-          width: "60%",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "center",
-          gap: "2rem",
-        }}
+      <Box
+        className="bandInfo flex flex-col items-start justify-center lg:gap-8 w-full lg:ml-20 ml-0"
       >
+        {/* Name of heavy metal band */}
         <Typography
           variant="h3"
           component="h1"
@@ -34,8 +29,10 @@ const BandInfo = (bandDetails: any) => {
         >
           {bandDetails?.bandDetails?.strArtist}
         </Typography>
+
+        {/* Genre, Country, Formed Year of heavy metal band*/}
         <Container
-          className="flex flex-row gap-20"
+          className="flex flex-row gap-8 lg:gap-18 m-4"
           sx={{ alignItems: "flex-start" }}
           disableGutters
         >
@@ -81,7 +78,7 @@ const BandInfo = (bandDetails: any) => {
             Share
           </Button>
         </Box>
-      </Container>
+      </Box>
     </section>
   );
 };

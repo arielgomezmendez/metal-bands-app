@@ -1,4 +1,4 @@
-import { Typography, Container, Box, Button, Stack } from "@mui/material";
+import { Typography, Container, Box, Button, Stack, Divider } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 
 const BandInfo = (bandDetails: any) => {

@@ -7,7 +7,7 @@ const Header = () => {
           <a></a>
           <p style={{ fontWeight: "bold", fontSize: "1.2rem" }}>Metal Bands</p>
         </div>
-        <nav className="header-nav " aria-label="Main navigation">
+        <nav className="header-nav">
           <ul
             className="nav-list flex flex-row gap-4"
             style={{ color: "#8A8A8A" }}

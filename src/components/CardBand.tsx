@@ -22,8 +22,7 @@ const CardBand = (props: CardBandProps) => {
   return (
     <>
       <Card sx={{ maxWidth: 320}}>
-        <CardActionArea>
-          <CardMedia component="img"  image={imageUrl} alt={name} sx={{height:'200', width:'100%', objectFit:'contain'}}/>
+          <CardMedia component="img"  image={imageUrl} alt={`Promotional photo of ${name}`} sx={{height:'200', width:'100%', objectFit:'contain'}}/>
           <CardContent style={{ backgroundColor: "#1A1A1A" }} className="flex flex-col items-start">
             <Typography
               gutterBottom
@@ -34,13 +33,13 @@ const CardBand = (props: CardBandProps) => {
             >
               {name}
             </Typography>
-            <Typography variant="body2" color="#8A8A8A" className="flex flex-row  gap-2 pl-1">
+            {/* Genre and country of heavy metal band */}
+            <Typography variant="body2" color="#8A8A8A" component="p" sx={{marginLeft:"4px"}}>
               <span>{genre}</span>
-              <span>|</span>
+              <span style={{padding:"4px"}}>|</span>
               <span>{country}</span>
             </Typography>
           </CardContent>
-        </CardActionArea>
         <CardActions style={{ backgroundColor: "#1A1A1A" }}>
           <Button
            component={RouterLink}

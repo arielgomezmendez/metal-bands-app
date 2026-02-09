@@ -21,7 +21,7 @@ const BandData = ({ bandDetails, bandDiscography }: BandDataProps) => {
           className="flex flex-col"
           sx={{ alignItems: "flex-start" }}
         >
-          Discography
+          Latest album releases
         </Typography>
 
         {bandDiscography.length > 0

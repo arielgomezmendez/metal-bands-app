@@ -1,4 +1,4 @@
-import { Typography, Container, Box, Button, Stack } from "@mui/material";
+import { Typography, Box, Button, Stack } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect, useRef } from "react";
 
@@ -23,7 +23,7 @@ const BandInfo = (bandDetails: any) => {
         {bandDetails?.bandDetails ? (
           <img
             src={bandDetails.bandDetails?.strArtistThumb}
-            alt="Heavy metal band picture"
+            alt={`Promotional photo of ${bandDetails?.bandDetails?.strArtist}`}
             style={{ width: "100%", height: "100%", borderRadius: "8px" }}
           />
         ) : (

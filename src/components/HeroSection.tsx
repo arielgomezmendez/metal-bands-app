@@ -8,7 +8,7 @@ const HeroSection = () => {
         <Container>
           <Typography
             component="h1"
-            variant="h4"
+            variant="h3"
             gutterBottom
             sx={{ fontWeight: "bold", marginTop: "4%" }}
             color="#F5F5F5"

@@ -1,9 +1,7 @@
-import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import {
   Button,
-  CardActionArea,
   CardActions,
   CardMedia,
   Typography,
@@ -43,6 +41,7 @@ const CardBand = (props: CardBandProps) => {
         <CardActions style={{ backgroundColor: "#1A1A1A" }}>
           <Button
            component={RouterLink}
+           aria-label={`View ${(name ? name : "")} band details`}
            to={`/band/${encodeURIComponent(name ? name : "")}`}
             sx={{
               marginLeft: "5%",

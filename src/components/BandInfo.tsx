@@ -1,7 +1,16 @@
-import { Typography, Container, Box, Button, Stack, Divider } from "@mui/material";
+import { Typography, Container, Box, Button, Stack } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
+import { useEffect, useRef } from "react";
 
 const BandInfo = (bandDetails: any) => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (bandDetails != null) {
+      headingRef.current?.focus();
+    }
+  }, [bandDetails]);
+
   return (
     <section
       className="bandInfo flex lg:flex-row md:flex-col max-sm:flex-col"
@@ -34,6 +43,8 @@ const BandInfo = (bandDetails: any) => {
         {/* Name of heavy metal band */}
         {bandDetails?.bandDetails?.strArtist ? (
           <Typography
+            ref={headingRef}
+            tabIndex={-1}
             variant="h3"
             component="h1"
             className="bandName"
@@ -53,17 +64,16 @@ const BandInfo = (bandDetails: any) => {
         )}
 
         {/* Genre, Country, Formed Year of heavy metal band*/}
-        <Container
-          className="flex flex-row gap-8 lg:gap-18 m-4"
-          sx={{ alignItems: "flex-start" }}
-          disableGutters
+        <dl
+          className="flex flex-row gap-8 lg:gap-18 mt-4 mb-4 lg:mt-0 lg:mb-0"
+          style={{ alignItems: "flex-start" }}
         >
           <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
-            <Typography color="#8A8A8A" component="p">
+            <Typography color="#8A8A8A" component="dt">
               Genre
             </Typography>
             {bandDetails?.bandDetails?.strGenre ? (
-              <Typography color="#F5F5F5" component="p">
+              <Typography color="#F5F5F5" component="dd">
                 {bandDetails?.bandDetails?.strGenre}
               </Typography>
             ) : (
@@ -75,11 +85,11 @@ const BandInfo = (bandDetails: any) => {
           </Stack>
 
           <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
-            <Typography color="#8A8A8A" component="p">
+            <Typography color="#8A8A8A" component="dt">
               Country
             </Typography>
             {bandDetails?.bandDetails?.strCountry ? (
-              <Typography color="#F5F5F5" component="p">
+              <Typography color="#F5F5F5" component="dd">
                 {bandDetails?.bandDetails?.strCountry}
               </Typography>
             ) : (
@@ -91,11 +101,11 @@ const BandInfo = (bandDetails: any) => {
           </Stack>
 
           <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>
-            <Typography color="#8A8A8A" component="p">
-              Fromed
+            <Typography color="#8A8A8A" component="dt">
+              Formed
             </Typography>
             {bandDetails?.bandDetails?.intFormedYear ? (
-              <Typography color="#F5F5F5" component="p">
+              <Typography color="#F5F5F5" component="dd">
                 {bandDetails?.bandDetails?.intFormedYear}
               </Typography>
             ) : (
@@ -105,7 +115,7 @@ const BandInfo = (bandDetails: any) => {
               />
             )}
           </Stack>
-        </Container>
+        </dl>
         <Box
           aria-label="Button group"
           className="buttonGroup flex flex-row gap-4"

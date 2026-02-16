@@ -34,6 +34,7 @@ const BandDetails = () => {
       setBandDiscography(bandDiscography?.album);
     };
     fetchBandDiscographyAudioDb();
+    
   }, [name]);
 
   return (

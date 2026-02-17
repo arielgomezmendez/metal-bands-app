@@ -65,7 +65,7 @@ const BandInfo = (bandDetails: any) => {
 
         {/* Genre, Country, Formed Year of heavy metal band*/}
         <dl
-          className="flex flex-row gap-8 lg:gap-18 mt-4 mb-4 lg:mt-0 lg:mb-0"
+          className="flex lg:flex-row flex-col gap-8 lg:gap-18 mt-4 mb-4 lg:mt-0 lg:mb-0"
           style={{ alignItems: "flex-start" }}
         >
           <Stack className="flex flex-col" sx={{ alignItems: "flex-start" }}>

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardBand from "../components/CardBand";
 import HeroSection from "../components/HeroSection";
-import Header from "../components/Header";
 import { Typography } from "@mui/material";
 
 //import { getMetalBandsFromLastFm } from "../services/lastfm.service";

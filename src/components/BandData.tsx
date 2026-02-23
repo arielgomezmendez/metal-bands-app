@@ -28,8 +28,8 @@ const BandData = ({ bandDetails, bandDiscography }: BandDataProps) => {
           ? bandDiscography.map((album, index) => (
               <Album
                 key={index}
-                albumName={album?.strAlbum}
-                albumYear={album?.intYearReleased}
+                albumName={album?.name}
+                albumYear={album?.release_date?.split("-")[0]}
               />
             ))
           : Array.from({ length: 2 }).map((_, index) => (

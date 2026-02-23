@@ -15,6 +15,7 @@ export const getSpotifyAccessToken = async (): Promise<string> => {
   });
 
   const data = await response.json();
+  sessionStorage.setItem("spotify_AccessToken", data.access_token); // Store the access token in session storage to avoid unnecessary requests on page reloads.
 
   return data.access_token;
 };

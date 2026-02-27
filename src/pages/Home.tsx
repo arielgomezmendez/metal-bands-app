@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CardBand from "../components/CardBand";
 import HeroSection from "../components/HeroSection";
-import { Typography } from "@mui/material";
+import { Skeleton, Typography } from "@mui/material";
 
 //import { getMetalBandsFromLastFm } from "../services/lastfm.service";
 //import { getMetalBandFromAudioDB } from "../services/audiodb.service";
@@ -16,7 +16,6 @@ type BandType = {
 const Home = () => {
   const [bands, setBands] = useState<Array<BandType>>([]);
   //const [bandImgUrls, setBandImgUrls] = useState<String>("");
- 
 
   useEffect(() => {
     //Request to real APIs
@@ -42,9 +41,9 @@ const Home = () => {
       //console.log(bandsFromMock);
     };
     fetchMockBands();
-
-    
   }, []);
+
+  console.log("bands:", bands);
 
   return (
     <>
@@ -60,18 +59,32 @@ const Home = () => {
         >
           Bands
         </Typography>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-6">
-          {bands.map((band) => (
-            <li key={band.name}>
-              <CardBand
-                name={band.name}
-                country={band.country}
-                genre={band.genre}
-                imageUrl={band.imgUrl}
-              />
-            </li>
-          ))}
-        </ul>
+        {bands.length != 0 ? (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-6">
+            {bands.map((band) => (
+              <li key={band.name}>
+                <CardBand
+                  name={band.name}
+                  country={band.country}
+                  genre={band.genre}
+                  imageUrl={band.imgUrl}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-6">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <li key={index}>
+                <Skeleton
+                  variant="rectangular"
+                  height={400}
+                  sx={{ bgcolor: "grey.800", borderRadius: "8px" }}
+                />
+              </li>
+            ))}
+          </ul>
+          )}
       </section>
     </>
   );

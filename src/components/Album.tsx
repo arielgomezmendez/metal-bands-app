@@ -1,16 +1,43 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Skeleton, Stack, Typography } from "@mui/material";
 
 type AlbumPropsType = {
   albumName: string;
   albumYear: string;
+  albumImageUrl?: string;
 };
 
-const Album = ({ albumName, albumYear }: AlbumPropsType) => {
+const Album = ({ albumName, albumYear, albumImageUrl }: AlbumPropsType) => {
   return (
-    <>
-      <Box
+    <Box
+      sx={{
+        backgroundColor: "#1A1A1A",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        borderRadius: "8px",
+        padding: "0.5rem",
+        gap: "1rem",
+      }}
+    >
+      {albumImageUrl ? (
+        <>
+        <img src={albumImageUrl} alt={`Studio album cover of ${albumName}`} />
+        
+        </>
+        
+      ) : (
+        <Skeleton
+          variant="rectangular"
+          sx={{
+            backgroundColor: "red",
+            borderRadius: "8px",
+            width: "64px",
+            height: "64px",
+          }}
+        />
+      )}
+      <Stack
         sx={{
-          backgroundColor: "#1A1A1A",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
@@ -25,8 +52,8 @@ const Album = ({ albumName, albumYear }: AlbumPropsType) => {
         <Typography color="#8A8A8A" component="p">
           {albumYear}
         </Typography>
-      </Box>
-    </>
+      </Stack>
+    </Box>
   );
 };
 

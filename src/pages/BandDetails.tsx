@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  getMetalBandDiscographyFromAudioDB,
   getMetalBandFromAudioDB,
 } from "../services/audiodb.service";
 import { useParams } from "react-router-dom";
@@ -13,6 +12,9 @@ import { getDataFromSpotifyApi } from "../services/spotifyApi.service";
 export type AlbumType = {
   name: string;
   release_date: string;
+  images: {
+    url: string;
+  }[];
 };
 
 const BandDetails = () => {

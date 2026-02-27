@@ -24,22 +24,27 @@ const BandData = ({ bandDetails, bandDiscography }: BandDataProps) => {
           Latest album releases
         </Typography>
 
-        {bandDiscography.length > 0
-          ? bandDiscography.map((album, index) => (
-              <Album
-                key={index}
-                albumName={album?.name}
-                albumYear={album?.release_date?.split("-")[0]}
-              />
-            ))
-          : Array.from({ length: 2 }).map((_, index) => (
-              <Skeleton
-                key={index}
-                variant="rectangular"
-                height={88}
-                sx={{ bgcolor: "grey.800", borderRadius: "8px" }}
-              />
-            ))}
+        {/** List of albumes */}
+        <ul>
+          {bandDiscography.length > 0
+            ? bandDiscography.map((album, index) => (
+                <li key={index} style={{ marginTop: "10px" }}>
+                  <Album
+                    albumName={album?.name}
+                    albumYear={album?.release_date?.split("-")[0]}
+                    albumImageUrl={album?.images[2]?.url}
+                  />
+                </li>
+              ))
+            : Array.from({ length: 10 }).map((_, index) => (
+                <Skeleton
+                  key={index}
+                  variant="rectangular"
+                  height={88}
+                  sx={{ bgcolor: "grey.800", borderRadius: "8px", marginTop: "10px" }}
+                />
+              ))}
+        </ul>
 
         <Stack
           className="mt-6"

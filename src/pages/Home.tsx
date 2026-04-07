@@ -43,8 +43,6 @@ const Home = () => {
     fetchMockBands();
   }, []);
 
-  console.log("bands:", bands);
-
   return (
     <>
       <HeroSection />

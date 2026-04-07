@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  getMetalBandFromAudioDB,
-} from "../services/audiodb.service";
+import { getMetalBandFromAudioDB } from "../services/audiodb.service";
 import { useParams } from "react-router-dom";
 import BandInfo from "../components/BandInfo";
 import BandData from "../components/BandData";
@@ -17,72 +15,50 @@ export type AlbumType = {
   }[];
 };
 
+export type SpotifyTokenType = {
+  access_token: string;
+  expires_in: number;
+  token_type: string;
+};
+
 const BandDetails = () => {
   const { name } = useParams();
   const [bandDetails, setBandDetails] = useState<any>(null);
   const [bandDiscography, setBandDiscography] = useState<AlbumType[]>([]);
   const [spotifyToken, setSpotifyToken] = useState<string>("");
   const [bandId, setBandId] = useState<string>("");
-  //const [storedToken, setStoredToken] = useState<string | null>("");
+
+  let token: SpotifyTokenType;
 
   useEffect(() => {
     const fetchBandsAudioDb = async () => {
       const bandsAudioDb = await getMetalBandFromAudioDB(name ? name : "");
-      //console.log("bandsAudioDb: ",bandsAudioDb.artists[0]);
-      setBandDetails(bandsAudioDb.artists[0]);
+      setBandDetails(bandsAudioDb?.artists[0]);
     };
 
     fetchBandsAudioDb();
-    /* Get  the las 2 albums of heavy metal band */
-    /*const fetchBandDiscographyAudioDb = async () => {
-      const bandDiscography = await getMetalBandDiscographyFromAudioDB(
-        name ? name : "",
-      );
-      setBandDiscography(bandDiscography?.album);
-    };
-    fetchBandDiscographyAudioDb();*/
 
     //Request to Spotify API for access token
-    const getToken = async () => {
+    const fetchSpotifyData = async () => {
       try {
-        const token = await getSpotifyAccessToken();
-        sessionStorage.setItem("spotify_AccessToken", token);
-      } catch (error) {
-        console.error("Error fetching Spotify access token:", error);
-      }
-    };
-
-    const storedToken = sessionStorage.getItem("spotify_AccessToken"); // Store the access token in session storage to avoid unnecessary requests on page reloads.
-
-    if (storedToken) {
-      setSpotifyToken(storedToken);
-    } else {
-      console.log("No Spotify Access Token in state yet.");
-      getToken();
-    }
-
-    // Fetch band ID.
-    const fetchFromSpotify = async () => {
-      try {
-        if (storedToken) {
-          const dataFromSpotify = await getDataFromSpotifyApi(
-            storedToken,
-            `search?q=${encodeURIComponent(name ? name : "")}&type=artist`,
-          );
-          setBandId(dataFromSpotify.artists?.items[0]?.id);
-          console.log("Band ID from Spotify: ", dataFromSpotify?.artists?.items[0]?.id);
-        }
+        token = await getSpotifyAccessToken();
+        setSpotifyToken(token?.access_token);
+      
+        const dataFromSpotify = await getDataFromSpotifyApi(
+          token?.access_token,
+          `search?q=${encodeURIComponent(name ? name : "")}&type=artist`,
+        );
+        setBandId(dataFromSpotify.artists?.items[0]?.id);
       } catch (error) {
         console.error("Error fetching data from Spotify API:", error);
       }
     };
-
-    fetchFromSpotify();
+    fetchSpotifyData();
   }, [name]);
 
   // Fetch the band's albums from Spotify API using the band ID obtained from the previous request.
   useEffect(() => {
-    if (!bandId || !spotifyToken) return;
+    if (!bandId) return;
     const fetchAlbums = async () => {
       try {
         const getAlbums = await getDataFromSpotifyApi(
@@ -90,10 +66,7 @@ const BandDetails = () => {
           `artists/${bandId}/albums?include_groups=album&limit=10`,
         );
         setBandDiscography(getAlbums?.items);
-        console.log(
-          "Band discography from Spotify: ",
-          getAlbums?.items,
-        );
+        console.log("Band discography from Spotify: ", getAlbums?.items);
       } catch (error) {
         console.error(
           "Error fetching data from Spotify API with band ID:",
@@ -103,7 +76,7 @@ const BandDetails = () => {
     };
     fetchAlbums();
   }, [bandId]);
-  
+
   return (
     <>
       <Container className="flex flex-col">

@@ -59,13 +59,13 @@ const BandData = ({ bandDetails, bandDiscography }: BandDataProps) => {
             Biography
           </Typography>
 
-          {bandDetails?.strBiographyEN ? (
+          {bandDetails?.strBiography ? (
             <Typography
               color="#8A8A8A"
               component="p"
               sx={{ textAlign: "justify" }}
             >
-              {bandDetails?.strBiographyEN}
+              {bandDetails?.strBiography}
             </Typography>
           ) : (
             <>

@@ -131,7 +131,7 @@ const BandInfo = ({ bandDetails, trackId }: BandInfoPropsType) => {
         >
           <Button
             variant="contained"
-            sx={{ backgroundColor:"transparent", color:  "#1DB954", border:"solid,1.4px, #1DB954" }}
+            sx={{ backgroundColor:"transparent", color:  "#1DB954", border:"solid 1.4px  #1DB954" }}
             onClick={() => setShowIframeSpotifyEmbed(!showIframeSpotifyEmbed)}
           >
             Play on Spotify

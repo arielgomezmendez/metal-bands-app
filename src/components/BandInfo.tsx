@@ -1,10 +1,19 @@
 import { Typography, Box, Button, Stack } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const BandInfo = (bandDetails: any) => {
+type BandInfoPropsType = {
+  bandDetails: any;
+  trackId: string;
+};
+
+const BandInfo = ({ bandDetails, trackId }: BandInfoPropsType) => {
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const [showIframeSpotifyEmbed, setShowIframeSpotifyEmbed] = useState(false);
+  console.log("trackId", trackId);
+  console.log("Band details: ", bandDetails?.strArtist);
 
+  //Manage the focus
   useEffect(() => {
     if (bandDetails != null) {
       headingRef.current?.focus();
@@ -20,9 +29,9 @@ const BandInfo = (bandDetails: any) => {
         className="bandImg"
         style={{ width: "44%", aspectRatio: "1 / 1", borderRadius: "8px" }}
       >
-        {bandDetails?.bandDetails ? (
+        {bandDetails?.strArtistThumb ? (
           <img
-            src={bandDetails.bandDetails?.strArtistThumb}
+            src={bandDetails?.strArtistThumb}
             alt={`Promotional photo of ${bandDetails?.bandDetails?.strArtist}`}
             style={{ width: "100%", height: "100%", borderRadius: "8px" }}
           />
@@ -41,7 +50,7 @@ const BandInfo = (bandDetails: any) => {
 
       <Box className="bandInfo flex flex-col items-start justify-center lg:gap-8 w-full lg:ml-20 ml-0">
         {/* Name of heavy metal band */}
-        {bandDetails?.bandDetails?.strArtist ? (
+        {bandDetails?.strArtist ? (
           <Typography
             ref={headingRef}
             tabIndex={-1}
@@ -51,7 +60,7 @@ const BandInfo = (bandDetails: any) => {
             color="#F5F5F5"
             sx={{ fontSize: "3rem" }}
           >
-            {bandDetails?.bandDetails?.strArtist}
+            {bandDetails?.strArtist}
           </Typography>
         ) : (
           <Skeleton
@@ -72,9 +81,9 @@ const BandInfo = (bandDetails: any) => {
             <Typography color="#8A8A8A" component="dt">
               Genre
             </Typography>
-            {bandDetails?.bandDetails?.strGenre ? (
+            {bandDetails?.strGenre ? (
               <Typography color="#F5F5F5" component="dd">
-                {bandDetails?.bandDetails?.strGenre}
+                {bandDetails?.strGenre}
               </Typography>
             ) : (
               <Skeleton
@@ -88,9 +97,9 @@ const BandInfo = (bandDetails: any) => {
             <Typography color="#8A8A8A" component="dt">
               Country
             </Typography>
-            {bandDetails?.bandDetails?.strCountry ? (
+            {bandDetails?.strCountry ? (
               <Typography color="#F5F5F5" component="dd">
-                {bandDetails?.bandDetails?.strCountry}
+                {bandDetails?.strCountry}
               </Typography>
             ) : (
               <Skeleton
@@ -104,9 +113,9 @@ const BandInfo = (bandDetails: any) => {
             <Typography color="#8A8A8A" component="dt">
               Formed
             </Typography>
-            {bandDetails?.bandDetails?.intFormedYear ? (
+            {bandDetails?.intFormedYear ? (
               <Typography color="#F5F5F5" component="dd">
-                {bandDetails?.bandDetails?.intFormedYear}
+                {bandDetails?.intFormedYear}
               </Typography>
             ) : (
               <Skeleton
@@ -123,8 +132,9 @@ const BandInfo = (bandDetails: any) => {
           <Button
             variant="contained"
             sx={{ backgroundColor: "#E53935", color: "#F5F5F5" }}
+            onClick={() => setShowIframeSpotifyEmbed(!showIframeSpotifyEmbed)}
           >
-            Listen now
+            Play on Spotify
           </Button>
           <Button
             variant="contained"
@@ -133,6 +143,18 @@ const BandInfo = (bandDetails: any) => {
             Share
           </Button>
         </Box>
+        {showIframeSpotifyEmbed && (
+          <iframe
+            src={`https://open.spotify.com/embed/track/${trackId}`}
+            style={{ marginTop: "10px" }}
+            width="100%"
+            height="100"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          >
+            <h1>Spotify</h1>
+          </iframe>
+        )}
       </Box>
     </section>
   );

@@ -5,6 +5,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import BandDetails from "./pages/BandDetails";
 import Layout from "./components/Layout";
+import GuessTheRift from "./pages/GuessTheRift";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />}></Route>
         <Route path="/band/:name" element={<BandDetails />}></Route>
+        <Route path="/guess-the-riff" element={<GuessTheRift/>}></Route>
       </Route>
     </Routes>
   );

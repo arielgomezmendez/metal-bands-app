@@ -13,10 +13,10 @@ const Header = () => {
             style={{ color: "#8A8A8A" }}
           >
             <li>
-              <a href="/">Home</a>
+              <a href="/">Bands</a>
             </li>
             <li>
-              <a href="/">About</a>
+              <a href="/guess-the-riff">Guess the Riff</a>
             </li>
             <li>
               <a href="/">Contact</a>

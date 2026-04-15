@@ -5,13 +5,12 @@ import { useEffect, useRef, useState } from "react";
 type BandInfoPropsType = {
   bandDetails: any;
   trackId: string;
+  trackName: string;
 };
 
-const BandInfo = ({ bandDetails, trackId }: BandInfoPropsType) => {
+const BandInfo = ({ bandDetails, trackId, trackName }: BandInfoPropsType) => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [showIframeSpotifyEmbed, setShowIframeSpotifyEmbed] = useState(false);
-  console.log("trackId", trackId);
-  console.log("Band details: ", bandDetails?.strArtist);
 
   //Manage the focus
   useEffect(() => {
@@ -130,23 +129,38 @@ const BandInfo = ({ bandDetails, trackId }: BandInfoPropsType) => {
           className="buttonGroup flex flex-row gap-4"
         >
           <Button
-            variant="contained"
-            sx={{ backgroundColor:"transparent", color:  "#1DB954", border:"solid 1.4px  #1DB954" }}
+            sx={{
+              backgroundColor: "transparent",
+              color: "#1DB954",
+              border: "solid 1.4px  #1DB954",
+              "&.Mui-disabled": {
+                opacity: 0.5,
+                color: "#1DB954",
+                border: "1.4px solid #1DB954",
+                backgroundColor: "transparent",
+              },
+            }}
+            aria-expanded={showIframeSpotifyEmbed}
+            aria-controls="spotify-player"
             onClick={() => setShowIframeSpotifyEmbed(!showIframeSpotifyEmbed)}
+            disabled={!trackId}
           >
-            Play on Spotify
+            Listen now
           </Button>
           <Button
             variant="contained"
             sx={{ backgroundColor: "#1A1A1A", color: "#F5F5F5" }}
+            disabled
           >
             Share
           </Button>
         </Box>
         {showIframeSpotifyEmbed && (
           <iframe
+            id="spotify-player"
+            title={`Spotify player for ${trackName} of ${bandDetails.strArtist} `}
             src={`https://open.spotify.com/embed/track/${trackId}`}
-            style={{ marginTop: "10px"}}
+            style={{ marginTop: "10px" }}
             width="100%"
             height="100"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

@@ -28,6 +28,7 @@ const BandDetails = () => {
   const [spotifyToken, setSpotifyToken] = useState<string>("");
   const [bandId, setBandId] = useState<string>("");
   const [trackId, setTrackId] = useState<string>("");
+  const [trackName, setTrackName] = useState<string>("");
 
   let token: SpotifyTokenType;
 
@@ -71,8 +72,9 @@ const BandDetails = () => {
           spotifyToken,
           `search?q=artist:${encodeURIComponent(name ? name : "")}&type=track&limit=10`,
         );
-        setTrackId(searchData?.tracks?.items[0].id)
-        
+        setTrackId(searchData?.tracks?.items[0].id);
+        setTrackName(searchData?.tracks?.items[0].name);
+        console.log(searchData?.tracks?.items[0].name);
       } catch (error) {
         console.error(
           "Error fetching data from Spotify API with band ID:",
@@ -86,7 +88,11 @@ const BandDetails = () => {
   return (
     <>
       <Container className="flex flex-col">
-        <BandInfo bandDetails={bandDetails} trackId = {trackId} />
+        <BandInfo
+          bandDetails={bandDetails}
+          trackId={trackId}
+          trackName={trackName}
+        />
         <BandData bandDetails={bandDetails} bandDiscography={bandDiscography} />
       </Container>
     </>

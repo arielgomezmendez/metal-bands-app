@@ -1,31 +1,32 @@
 import {
   Box,
-  Button,
   Card,
   CardContent,
   IconButton,
+  LinearProgress,
   Typography,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
-type DeezerTrack = {
+/*type DeezerTrack = {
   id: number;
   title: string;
   preview: string;
   artistName: string | null;
-};
+};*/
 
 const GuessTheRift = () => {
   const [deezerData, setDezeerData] = useState(null);
   const [preview, setPreview] = useState<string>("");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState<number | null>(null);
+  const [timePorgress, setTimeProgress] = useState<any>(null);
 
   const fetchDezeerData = async () => {
     try {
       const response = await fetch("http://localhost:3000/api/deezer-search");
       const data = await response.json();
-      console.log("Data: ", data[0]?.preview);
       setDezeerData(data);
       setPreview(data[0]?.preview);
       return data;
@@ -36,12 +37,10 @@ const GuessTheRift = () => {
 
   useEffect(() => {
     fetchDezeerData();
-    //console.log(deezerData[0]?.preview)
   }, []);
 
-//Function to handle the Play/Pause
+  //Function to handle the Play/Pause
   const handleAudio = () => {
-    console.log("Time: ", audioRef.current?.currentTime);
     if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
@@ -50,6 +49,17 @@ const GuessTheRift = () => {
       audioRef.current.play();
       setIsPlaying(true);
     }
+  };
+
+  const handleTimeUpdate = () => {
+    setTimeProgress(audioRef?.current?.currentTime);
+  };
+
+  //Get the real duration of track
+  const getTrackDuration = () => {
+    if (audioRef?.current) {
+      setDuration(audioRef?.current?.duration);
+    }  
   };
 
   return (
@@ -86,9 +96,11 @@ const GuessTheRift = () => {
           <Box>
             {preview && (
               <audio
+                onLoadedMetadata={getTrackDuration} // Event of audio object that load the track metadata
                 ref={audioRef}
                 src={preview}
                 onEnded={() => setIsPlaying(false)}
+                onTimeUpdate={handleTimeUpdate}
               />
             )}
             <IconButton
@@ -112,6 +124,12 @@ const GuessTheRift = () => {
               {" "}
               {isPlaying ? "Pause" : "Play"}
             </IconButton>
+            <LinearProgress
+              value={duration ? (timePorgress / duration ) * 100 : 0}
+              variant="determinate"
+              aria-label="Song playback progress bar"
+              valueBuffer={100}
+            />
           </Box>
         </CardContent>
       </Card>

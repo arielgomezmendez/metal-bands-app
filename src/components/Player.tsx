@@ -23,11 +23,11 @@ const Player = ({
   handleAudio,
   isPlaying,
   duration,
-  timePorgress
+  timePorgress,
 }: PlayerPropsType) => {
   return (
     <>
-      <Box>
+      <Box className="flex flex-row gap-2 ">
         {selectedTrack?.preview && (
           <audio
             onLoadedMetadata={getTrackDuration} // Event of audio object that load the track metadata
@@ -59,6 +59,14 @@ const Player = ({
           {isPlaying ? "Pause" : "Play"}
         </IconButton>
         <LinearProgress
+          className="h-2 flex-1 mt-10"
+          sx={{
+            borderRadius: 4,
+            backgroundColor: "#555",
+            "& .MuiLinearProgress-bar": {
+              backgroundColor: "#D32F2F", // 
+            },
+          }}
           value={duration ? (timePorgress / duration) * 100 : 0}
           variant="determinate"
           aria-label="Song playback progress bar"

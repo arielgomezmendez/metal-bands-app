@@ -1,3 +1,7 @@
+/* https://spotify-server-rosy-delta.vercel.app/api/deezer-search */ // URL in Vercel
+
+/* "http://localhost:3000/api/deezer-search" */ // Local URL
+
 import {
   Card,
   CardContent,
@@ -23,7 +27,7 @@ const GuessTheRift = () => {
 
   const fetchDezeerData = async (): Promise<DeezerTrack[]> => {
     try {
-      const response = await fetch("http://localhost:3000/api/deezer-search");
+      const response = await fetch("https://spotify-server-rosy-delta.vercel.app/api/deezer-search");
       const data = await response.json();
       //Get a random track of the band
       if (data.length > 0) {

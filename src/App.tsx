@@ -12,8 +12,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />}></Route>
-        <Route path="/band/:name" element={<BandDetails />}></Route>
-        <Route path="/guess-the-riff" element={<GuessTheRiff/>}></Route>
+        <Route path="band/:name" element={<BandDetails />}></Route>
+        <Route path="guess-the-riff" element={<GuessTheRiff/>}></Route>
       </Route>
     </Routes>
   );

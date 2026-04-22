@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -13,13 +14,13 @@ const Header = () => {
             style={{ color: "#8A8A8A" }}
           >
             <li>
-              <a href="/">Bands</a>
+              <Link to="/">Bands</Link>
             </li>
             <li>
-              <a href="/guess-the-riff">Guess the Riff</a>
+              <Link to="/guess-the-riff">Guess the Riff</Link>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <Link to="/">Contact</Link>
             </li>
           </ul>
         </nav>

@@ -1,29 +1,30 @@
 import { Box, ButtonBase, Typography } from "@mui/material";
 
 const bandOptions = [
-  { id: "a", label: "A", name: "Megadeth", state: "selected-wrong" },
-  { id: "b", label: "B", name: "Slayer", state: "default" },
-  { id: "c", label: "C", name: "Metallica", state: "correct" },
-  { id: "d", label: "D", name: "Anthrax", state: "default" },
+  { id: "a", name: "Megadeth", state: "selected-wrong" },
+  { id: "b", name: "Slayer", state: "default" },
+  { id: "c", name: "Metallica", state: "correct" },
+  { id: "d", name: "Anthrax", state: "default" },
 ];
 
+// Set the styles of button with possible name bands accoriding the states
 const getOptionStyles = (state: string) => {
   switch (state) {
     case "selected-wrong":
       return {
         backgroundColor: "#b30000",
-        border: "3px solid #f5f5f5",
+        border: "2px solid #f5f5f5",
         boxShadow: "0 0 16px rgba(255, 0, 0, 0.35)",
       };
     case "correct":
       return {
         backgroundColor: "#2e7d32",
-        border: "3px solid transparent",
+        border: "2px solid #f5f5f5",
       };
     default:
       return {
         backgroundColor: "#111318",
-        border: "3px solid transparent",
+        border: "2px solid #f5f5f5",
       };
   }
 };
@@ -32,18 +33,18 @@ const BandOptions = () => {
   return (
     <Box
       sx={{
+        margin:"0 auto",
         display: "grid",
         gridTemplateColumns: {
           xs: "1fr",
           md: "1fr 1fr",
         },
         gap: 2,
-        width: "100%",
+        width: "60%",
       }}
     >
       {bandOptions.map((option) => {
         const optionStyles = getOptionStyles(option.state);
-
         return (
           <ButtonBase
             key={option.id}
@@ -61,37 +62,16 @@ const BandOptions = () => {
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
-                gap: 2,
-                px: 2.5,
-                py: 2.5,
-                minHeight: 96,
+                px: 1.8,
+                py: 1.8,
+                minHeight: 60,
               }}
             >
-              <Box
-                sx={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: 1.5,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 800,
-                  fontSize: "1.25rem",
-                  backgroundColor:
-                    option.state === "default" ? "#05070a" : "#f5f5f5",
-                  color: option.state === "default" ? "#8a8f98" : "#111",
-                  flexShrink: 0,
-                }}
-              >
-                {option.label}
-              </Box>
-
               <Typography
                 sx={{
                   color: "#f5f5f5",
-                  fontSize: "1.8rem",
+                  fontSize: "1.2rem",
                   fontWeight: 700,
-                  lineHeight: 1.1,
                 }}
               >
                 {option.name}

@@ -18,7 +18,7 @@ export type DeezerTrack = {
   artistName: string | null;
 };
 
-const GuessTheRift = () => {
+const GuessTheRiff = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState<number | null>(null);
@@ -117,4 +117,4 @@ const GuessTheRift = () => {
   );
 };
 
-export default GuessTheRift;
+export default GuessTheRiff;

@@ -1,6 +1,6 @@
 import { Box, IconButton, LinearProgress } from "@mui/material";
 import React from "react";
-import type { DeezerTrack } from "../pages/GuessTheRift";
+import type { DeezerTrack } from "../pages/GuessTheRiff";
 
 type PlayerPropsType = {
   selectedTrack: DeezerTrack | null;

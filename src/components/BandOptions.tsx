@@ -33,7 +33,7 @@ const BandOptions = () => {
   return (
     <Box
       sx={{
-        margin:"0 auto",
+        margin: "0 auto",
         display: "grid",
         gridTemplateColumns: {
           xs: "1fr",
@@ -48,13 +48,16 @@ const BandOptions = () => {
         return (
           <ButtonBase
             key={option.id}
-            disableRipple
             sx={{
               width: "100%",
               borderRadius: 3,
               overflow: "hidden",
               textAlign: "left",
               ...optionStyles,
+              "&.Mui-focusVisible": {
+                outline: "3px solid #D32F2F",
+                outlineOffset: "2px",
+              },
             }}
           >
             <Box

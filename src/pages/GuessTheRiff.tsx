@@ -2,14 +2,11 @@
 
 /* "http://localhost:3000/api/deezer-search" */ // Local URL
 
-import {
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { getRandomItem } from "../helpers/arrayHelper";
 import Player from "../components/Player";
+import BandOptions from "../components/BandOptions";
 
 export type DeezerTrack = {
   id: number;
@@ -27,7 +24,9 @@ const GuessTheRiff = () => {
 
   const fetchDezeerData = async (): Promise<DeezerTrack[]> => {
     try {
-      const response = await fetch("https://spotify-server-rosy-delta.vercel.app/api/deezer-search");
+      const response = await fetch(
+        "https://spotify-server-rosy-delta.vercel.app/api/deezer-search",
+      );
       const data = await response.json();
       //Get a random track of the band
       if (data.length > 0) {
@@ -111,6 +110,7 @@ const GuessTheRiff = () => {
             duration={duration}
             timePorgress={timePorgress}
           />
+          <BandOptions />
         </CardContent>
       </Card>
     </>

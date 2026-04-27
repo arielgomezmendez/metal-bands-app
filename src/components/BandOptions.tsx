@@ -1,39 +1,23 @@
 import { Box, ButtonBase, Typography } from "@mui/material";
-
-/*const bandOptions = [
-  { id: "a", name: "Megadeth", state: "default" },
-  { id: "b", name: "Slayer", state: "default" },
-  { id: "c", name: "Metallica", state: "default" },
-  { id: "d", name: "Anthrax", state: "default" },
-];*/
+import { useState } from "react";
 
 type BandOptionsPropsType = {
   bandOptions: string[];
+  correctBand: string;
+  selectedBand: string | null;
+  setSelectedBand: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-// Set the styles of button with possible name bands accoriding the states
-const getOptionStyles = (state: string) => {
-  switch (state) {
-    case "selected-wrong":
-      return {
-        backgroundColor: "#b30000",
-        border: "2px solid #f5f5f5",
-        boxShadow: "0 0 16px rgba(255, 0, 0, 0.35)",
-      };
-    case "correct":
-      return {
-        backgroundColor: "#2e7d32",
-        border: "2px solid #f5f5f5",
-      };
-    default:
-      return {
-        backgroundColor: "#111318",
-        border: "2px solid #f5f5f5",
-      };
-  }
-};
+const BandOptions = ({
+  bandOptions,
+  correctBand,
+  selectedBand,
+  setSelectedBand,
+}: BandOptionsPropsType) => {
+  const handleSelectedTrack = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setSelectedBand(e.currentTarget.textContent?.trim() ?? "");
+  };
 
-const BandOptions = ({bandOptions}:BandOptionsPropsType) => {
   return (
     <Box
       sx={{
@@ -49,15 +33,36 @@ const BandOptions = ({bandOptions}:BandOptionsPropsType) => {
     >
       {bandOptions.map((option) => {
         //const optionStyles = getOptionStyles(option.state);
+        const isSelected = selectedBand === option;
+        const isCorrect = option === correctBand;
+        const isIncorrect = isSelected && !isCorrect;
+        const hasAnswered = selectedBand !== null;
         return (
           <ButtonBase
             //key={option.id}
             key={option}
+            onClick={handleSelectedTrack}
+            disabled={hasAnswered}
             sx={{
               width: "100%",
               borderRadius: 3,
               overflow: "hidden",
               textAlign: "left",
+              backgroundColor:
+                hasAnswered && isCorrect
+                  ? "#2e7d32"
+                  : isIncorrect
+                    ? "#b30000"
+                    : "#111318",
+
+              border: "2px solid #f5f5f5",
+
+              boxShadow: isIncorrect
+                ? "0 0 16px rgba(255, 0, 0, 0.35)"
+                : "none",
+
+              opacity: hasAnswered && !isCorrect && !isSelected ? 0.6 : 1,
+
               //...optionStyles,
               "&.Mui-focusVisible": {
                 outline: "3px solid #D32F2F",

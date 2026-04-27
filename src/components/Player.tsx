@@ -26,7 +26,7 @@ const Player = ({
   timePorgress,
 }: PlayerPropsType) => {
   return (
-    <Box className="flex flex-row gap-2 mb-6 ">
+    <Box className="flex flex-row gap-2 mb-6 " >
       {selectedTrack?.preview && (
         <audio
           onLoadedMetadata={getTrackDuration} // Event of audio object that load the track metadata

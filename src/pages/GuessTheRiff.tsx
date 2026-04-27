@@ -22,19 +22,20 @@ const GuessTheRiff = () => {
   const [timePorgress, setTimeProgress] = useState(0);
   const [selectedTrack, setSelectedTrack] = useState<DeezerTrack | null>(null);
   const [bandOptions, setBandOptions] = useState<string[]>([]);
+  const [correctBand, setCorrectBand] = useState<string>("");
+  const [selectedBand, setSelectedBand] = useState<string | null>(null);
 
   const fetchDezeerData = async (): Promise<DeezerTrack[]> => {
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/deezer-search",
-      );
+      const response = await fetch("http://localhost:3000/api/deezer-search");
       const data = await response.json(); // A list of songs of a selected band
-      console.log("Data: ", data)
+      console.log("Data: ", data);
       //Get a random track of the band
       if (data?.tracks.length > 0) {
         const randomTrack = getRandomItem(data.tracks as DeezerTrack[]); // Get a random index of array and then select the band
         setSelectedTrack(randomTrack);
         setBandOptions(data.bandOptions);
+        setCorrectBand(data.correctBand);
       }
       return data;
     } catch (error) {
@@ -82,6 +83,14 @@ const GuessTheRiff = () => {
       >
         GUESS THE RIFF
       </Typography>
+      <Typography
+        component="p"
+        gutterBottom
+        sx={{ marginBottom: "4%" }}
+        color="#8A8A8A"
+      >
+        Listen to the track and choose the correct band
+      </Typography>
       <Card
         elevation={0}
         sx={{
@@ -113,10 +122,18 @@ const GuessTheRiff = () => {
             duration={duration}
             timePorgress={timePorgress}
           />
-          <BandOptions bandOptions={bandOptions}/>
+          <BandOptions
+            bandOptions={bandOptions}
+            correctBand={correctBand}
+            selectedBand={selectedBand}
+            setSelectedBand={setSelectedBand}
+          />
           <ButtonBase
             disabled={isPlaying}
-            onClick={fetchDezeerData}
+            onClick={() => {
+              fetchDezeerData();
+              setSelectedBand(null);
+            }}
             aria-label={`Select band ${selectedTrack?.artistName}`}
             sx={{
               borderRadius: "8px",

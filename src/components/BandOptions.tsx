@@ -87,7 +87,7 @@ const BandOptions = ({
                   fontWeight: 700,
                 }}
               >
-                {/*option.name*/}
+             
                 {option}
               </Typography>
             </Box>

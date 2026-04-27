@@ -93,6 +93,7 @@ const GuessTheRiff = () => {
       </Typography>
       <Card
         elevation={0}
+        className="flex flex-col"
         sx={{
           maxWidth: 700,
           width: "100%",

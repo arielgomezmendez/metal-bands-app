@@ -1,9 +1,9 @@
 import { Box, ButtonBase, Typography } from "@mui/material";
 
 const bandOptions = [
-  { id: "a", name: "Megadeth", state: "selected-wrong" },
+  { id: "a", name: "Megadeth", state: "default" },
   { id: "b", name: "Slayer", state: "default" },
-  { id: "c", name: "Metallica", state: "correct" },
+  { id: "c", name: "Metallica", state: "default" },
   { id: "d", name: "Anthrax", state: "default" },
 ];
 

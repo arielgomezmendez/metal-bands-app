@@ -2,7 +2,7 @@
 
 /* "http://localhost:3000/api/deezer-search" */ // Local URL
 
-import { Card, CardContent, Typography } from "@mui/material";
+import { ButtonBase, Card, CardContent, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { getRandomItem } from "../helpers/arrayHelper";
 import Player from "../components/Player";
@@ -111,6 +111,42 @@ const GuessTheRiff = () => {
             timePorgress={timePorgress}
           />
           <BandOptions />
+          <ButtonBase
+            disabled={isPlaying}
+            onClick={fetchDezeerData}
+            aria-label={`Select band ${selectedTrack?.artistName}`}
+            sx={{
+              borderRadius: "8px",
+              width: "60%",
+              marginTop: 4,
+              height: 40,
+              backgroundColor: "#D32F2F",
+              color: "#fff",
+              px: 1.8,
+              py: 1.8,
+              "&:hover": {
+                backgroundColor: "#B71C1C",
+              },
+              "&.Mui-disabled": {
+                backgroundColor: "#555",
+                color: "#aaa",
+              },
+              "&.Mui-focusVisible": {
+                outline: "3px solid #D32F2F",
+                outlineOffset: "2px",
+              },
+            }}
+          >
+            <Typography
+              sx={{
+                color: "#f5f5f5",
+                fontSize: "1.2rem",
+                fontWeight: 700,
+              }}
+            >
+              Next Riff
+            </Typography>
+          </ButtonBase>
         </CardContent>
       </Card>
     </>

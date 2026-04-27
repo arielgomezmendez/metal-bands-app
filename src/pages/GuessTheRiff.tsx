@@ -21,21 +21,24 @@ const GuessTheRiff = () => {
   const [duration, setDuration] = useState<number | null>(null);
   const [timePorgress, setTimeProgress] = useState(0);
   const [selectedTrack, setSelectedTrack] = useState<DeezerTrack | null>(null);
+  const [bandOptions, setBandOptions] = useState<string[]>([]);
 
   const fetchDezeerData = async (): Promise<DeezerTrack[]> => {
     try {
       const response = await fetch(
-        "https://spotify-server-rosy-delta.vercel.app/api/deezer-search",
+        "http://localhost:3000/api/deezer-search",
       );
-      const data = await response.json();
+      const data = await response.json(); // A list of songs of a selected band
+      console.log("Data: ", data)
       //Get a random track of the band
-      if (data.length > 0) {
-        const randomTrack = getRandomItem(data as DeezerTrack[]); // Get a random index of array and then select the band
+      if (data?.tracks.length > 0) {
+        const randomTrack = getRandomItem(data.tracks as DeezerTrack[]); // Get a random index of array and then select the band
         setSelectedTrack(randomTrack);
+        setBandOptions(data.bandOptions);
       }
-      return data as DeezerTrack[];
+      return data;
     } catch (error) {
-      console.error("Error fetching the data from server");
+      console.error("Error fetching the data from server: ", error);
       return [];
     }
   };
@@ -110,7 +113,7 @@ const GuessTheRiff = () => {
             duration={duration}
             timePorgress={timePorgress}
           />
-          <BandOptions />
+          <BandOptions bandOptions={bandOptions}/>
           <ButtonBase
             disabled={isPlaying}
             onClick={fetchDezeerData}

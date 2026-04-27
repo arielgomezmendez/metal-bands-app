@@ -1,11 +1,15 @@
 import { Box, ButtonBase, Typography } from "@mui/material";
 
-const bandOptions = [
+/*const bandOptions = [
   { id: "a", name: "Megadeth", state: "default" },
   { id: "b", name: "Slayer", state: "default" },
   { id: "c", name: "Metallica", state: "default" },
   { id: "d", name: "Anthrax", state: "default" },
-];
+];*/
+
+type BandOptionsPropsType = {
+  bandOptions: string[];
+};
 
 // Set the styles of button with possible name bands accoriding the states
 const getOptionStyles = (state: string) => {
@@ -29,7 +33,7 @@ const getOptionStyles = (state: string) => {
   }
 };
 
-const BandOptions = () => {
+const BandOptions = ({bandOptions}:BandOptionsPropsType) => {
   return (
     <Box
       sx={{
@@ -44,16 +48,17 @@ const BandOptions = () => {
       }}
     >
       {bandOptions.map((option) => {
-        const optionStyles = getOptionStyles(option.state);
+        //const optionStyles = getOptionStyles(option.state);
         return (
           <ButtonBase
-            key={option.id}
+            //key={option.id}
+            key={option}
             sx={{
               width: "100%",
               borderRadius: 3,
               overflow: "hidden",
               textAlign: "left",
-              ...optionStyles,
+              //...optionStyles,
               "&.Mui-focusVisible": {
                 outline: "3px solid #D32F2F",
                 outlineOffset: "2px",
@@ -77,7 +82,8 @@ const BandOptions = () => {
                   fontWeight: 700,
                 }}
               >
-                {option.name}
+                {/*option.name*/}
+                {option}
               </Typography>
             </Box>
           </ButtonBase>

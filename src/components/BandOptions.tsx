@@ -1,5 +1,4 @@
 import { Box, ButtonBase, Typography } from "@mui/material";
-import { useState } from "react";
 
 type BandOptionsPropsType = {
   bandOptions: string[];

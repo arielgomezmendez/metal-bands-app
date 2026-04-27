@@ -20,6 +20,7 @@ const BandOptions = ({
 
   return (
     <Box
+      aria-label="Band options"
       sx={{
         margin: "0 auto",
         display: "grid",
@@ -32,14 +33,14 @@ const BandOptions = ({
       }}
     >
       {bandOptions.map((option) => {
-        //const optionStyles = getOptionStyles(option.state);
         const isSelected = selectedBand === option;
         const isCorrect = option === correctBand;
         const isIncorrect = isSelected && !isCorrect;
         const hasAnswered = selectedBand !== null;
         return (
           <ButtonBase
-            //key={option.id}
+            aria-pressed={isSelected}
+            aria-label={`Select ${option}`}
             key={option}
             onClick={handleSelectedTrack}
             disabled={hasAnswered}

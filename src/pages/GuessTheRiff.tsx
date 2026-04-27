@@ -27,7 +27,7 @@ const GuessTheRiff = () => {
 
   const fetchDezeerData = async (): Promise<DeezerTrack[]> => {
     try {
-      const response = await fetch("http://localhost:3000/api/deezer-search");
+      const response = await fetch("https://spotify-server-rosy-delta.vercel.app/api/deezer-search");
       const data = await response.json(); // A list of songs of a selected band
       console.log("Data: ", data);
       //Get a random track of the band
@@ -135,7 +135,6 @@ const GuessTheRiff = () => {
               fetchDezeerData();
               setSelectedBand(null);
             }}
-            aria-label={`Select band ${selectedTrack?.artistName}`}
             sx={{
               borderRadius: "8px",
               width: "60%",

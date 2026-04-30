@@ -1,4 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+const getNavLinkStyle = ({ isActive }: { isActive: boolean }) => ({
+  color: isActive ? "#d32f2f" : "#8A8A8A",
+});
 
 const Header = () => {
   return (
@@ -14,10 +18,14 @@ const Header = () => {
             style={{ color: "#8A8A8A" }}
           >
             <li>
-              <Link to="/">Bands</Link>
+              <NavLink to="/"  style={getNavLinkStyle}>
+                Bands
+              </NavLink>
             </li>
             <li>
-              <Link to="/guess-the-riff">Guess the Riff</Link>
+              <NavLink to="/guess-the-riff" style={getNavLinkStyle}>
+                Guess the Riff
+              </NavLink>
             </li>
             <li>
               <Link to="/">Contact</Link>

@@ -30,7 +30,7 @@ const GuessTheRiff = () => {
     try {
       const response = await fetch("https://spotify-server-rosy-delta.vercel.app/api/deezer-search");
       const data = await response.json(); // A list of songs of a selected band
-      console.log("Data: ", data);
+      //console.log("Data: ", data);
       //Get a random track of the band
       if (data?.tracks.length > 0) {
         const randomTrack = getRandomItem(data.tracks as DeezerTrack[]); // Get a random index of array and then select the band

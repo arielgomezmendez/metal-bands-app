@@ -13,7 +13,7 @@ export const getDataFromSpotifyApi = async (accessToken: string, endPoint:string
       throw new Error("Error fetching data from Spotify API"); 
     }
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     return data;
     
   } catch (error) {

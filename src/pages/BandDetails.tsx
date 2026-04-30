@@ -75,7 +75,7 @@ const BandDetails = () => {
         );
         setTrackId(searchData?.tracks?.items[0].id);
         setTrackName(searchData?.tracks?.items[0].name);
-        console.log(searchData?.tracks?.items[0].name);
+        //console.log(searchData?.tracks?.items[0].name);
         
       } catch (error) {
         console.error(

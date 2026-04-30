@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { getRandomItem } from "../helpers/arrayHelper";
 import Player from "../components/Player";
 import BandOptions from "../components/BandOptions";
+import Feedback from "../components/Feedback";
 
 export type DeezerTrack = {
   id: number;
@@ -129,11 +130,14 @@ const GuessTheRiff = () => {
             selectedBand={selectedBand}
             setSelectedBand={setSelectedBand}
           />
+          <Feedback selectedBand={selectedBand} correctBand={correctBand}/>
+          {/* Next Riff button */}
           <ButtonBase
-            disabled={isPlaying}
+            disabled={!selectedBand}
             onClick={() => {
               fetchDezeerData();
               setSelectedBand(null);
+              setIsPlaying(false);
             }}
             sx={{
               borderRadius: "8px",

@@ -12,6 +12,9 @@ const Feedback = ({ selectedBand, correctBand }: FeedbackProps) => {
 
   return (
     <Box
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
       sx={{
         mt: 4,
         p: 3,
@@ -35,7 +38,7 @@ const Feedback = ({ selectedBand, correctBand }: FeedbackProps) => {
         {isCorrect ? "Correct" : "Incorrect"}
       </Typography>
 
-      <Typography sx={{ color: "#aaa" }}>
+      <Typography sx={{ color: "#FFF" }}>
         {isCorrect ? (
           <>
             You selected <strong>{selectedBand}</strong>. Great job!

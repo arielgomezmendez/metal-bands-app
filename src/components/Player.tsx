@@ -26,7 +26,10 @@ const Player = ({
   timePorgress,
 }: PlayerPropsType) => {
   return (
-    <Box className="flex flex-row gap-2 mb-6 mx-auto" sx={{ width: "60%" }}>
+    <Box
+      className="flex flex-row gap-2 mb-6 mx-auto p-4 rounded-2xl"
+      sx={{ width: "60%", backgroundColor: "rgba(255, 255, 255, 0.10)" , boxShadow:"0 0 30px rgba(183,28,28,0.4)"}}
+    >
       {selectedTrack?.preview && (
         <audio
           onLoadedMetadata={getTrackDuration} // Event of audio object that load the track metadata
@@ -41,9 +44,10 @@ const Player = ({
         disabled={!selectedTrack?.preview}
         aria-label={isPlaying ? "Pause preview" : "Play preview"}
         sx={{
-          width: { xs: 48, sm: 72 },
-          height: { xs: 48, sm: 72 },
-          fontSize: { xs: "0.75rem", sm: "0.875rem" },
+          width: { xs: 48, sm: 58 },
+          height: { xs: 48, sm:58  },
+          fontWeight:"bold",
+          fontSize: "1rem",
           backgroundColor: "#D32F2F",
           color: "#fff",
           "&:hover": {
@@ -59,7 +63,7 @@ const Player = ({
         {isPlaying ? "Pause" : "Play"}
       </IconButton>
       <LinearProgress
-        className="h-2 flex-1  mt-5 md:mt-10"
+        className="h-2 flex-1  mt-5 md:mt-8"
         sx={{
           borderRadius: 4,
           backgroundColor: "#555",

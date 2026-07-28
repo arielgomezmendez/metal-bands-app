@@ -14,9 +14,17 @@ type BandType = {
   imgUrl: string;
 };
 
+type MockBandType = {
+  name: string;
+  country: string;
+  genre: string;
+  image: string;
+};
+
 const Home = () => {
   const [bands, setBands] = useState<Array<BandType>>([]);
   //const [bandImgUrls, setBandImgUrls] = useState<String>("");
+  const [filteredBandsState, setFilteredBands] = useState<Array<BandType>>([]);
 
   useEffect(() => {
     //Request to real APIs
@@ -31,7 +39,7 @@ const Home = () => {
     const fetchMockBands = async () => {
       const mockData = await import("../assets/mock.json");
       const bandsFromMock: Array<BandType> = mockData.artists.artist.map(
-        (band: any) => ({
+        (band: MockBandType) => ({
           name: band.name,
           country: band.country,
           genre: band.genre,
@@ -39,15 +47,33 @@ const Home = () => {
         }),
       );
       setBands(bandsFromMock);
+      setFilteredBands(bandsFromMock);
       //console.log(bandsFromMock);
     };
     fetchMockBands();
   }, []);
 
+  const filteredBands = (value: string) => {
+    const searchValue = value.trim().toLowerCase();
+
+    if (!searchValue) {
+      return bands;
+    }
+
+    return bands.filter((band) =>
+      band.name.toLowerCase().includes(searchValue),
+    );
+  };
+
+  const handleSearch = (value: string) => {
+    setFilteredBands(filteredBands(value));
+  };
+  
+
   return (
     <>
       <HeroSection />
-      <SearchBand/>
+      <SearchBand onSearch={handleSearch} />
       <section aria-labelledby="bands-titel">
         <Typography
           id="bands-titel"
@@ -61,7 +87,7 @@ const Home = () => {
         </Typography>
         {bands.length != 0 ? (
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-6">
-            {bands.map((band) => (
+            {filteredBandsState.map((band) => (
               <li key={band.name}>
                 <CardBand
                   name={band.name}
@@ -84,7 +110,7 @@ const Home = () => {
               </li>
             ))}
           </ul>
-          )}
+        )}
       </section>
     </>
   );

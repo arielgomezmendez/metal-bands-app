@@ -1,10 +1,32 @@
+import { useState } from "react";
 
+type SearchProps = {
+  onSearch: (value: string) => void;
+};
 
-const SearchBand = () => {
+const SearchBand = ({ onSearch }: SearchProps) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSearch(inputValue.trim());
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    setInputValue(value);
+
+    if (!value.trim()) {
+      onSearch("");
+    }
+  };
+
   return (
     <form
       role="search"
       className="mx-auto flex w-86 mt-10 max-w-xl flex-col gap-3 sm:flex-row"
+      onSubmit={handleSubmit}
     >
       <label htmlFor="band-search" className="sr-only">
         Search
@@ -15,6 +37,8 @@ const SearchBand = () => {
         type="search"
         placeholder="Search band..."
         className="h-12 w-full rounded border border-gray-600 bg-[#181818] px-4 text-white placeholder:text-gray-400"
+        value={inputValue}
+        onChange={handleChange}
       />
 
       <button

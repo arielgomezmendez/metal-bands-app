@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CardBand from "../components/CardBand";
 import HeroSection from "../components/HeroSection";
 import { Skeleton, Typography } from "@mui/material";
+import SearchBand from "../components/SearchBand";
 
 //import { getMetalBandsFromLastFm } from "../services/lastfm.service";
 //import { getMetalBandFromAudioDB } from "../services/audiodb.service";
@@ -46,6 +47,7 @@ const Home = () => {
   return (
     <>
       <HeroSection />
+      <SearchBand/>
       <section aria-labelledby="bands-titel">
         <Typography
           id="bands-titel"

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import TypographyContent from "./TypographyContent";
+import { useRef } from "react";
 
 type FinishProps = {
   correctAnswersCount: number;
@@ -16,6 +17,7 @@ const Finish = ({
     18, 28, 38, 48, 58, 42, 30, 54, 72, 36, 26, 48, 64, 42, 30, 52, 66, 44, 34,
     48, 62, 40, 28, 36, 24,
   ];
+  const headingFinishRef = useRef<HTMLHeadingElement | null>(null);
 
   return (
     <section className="flex min-h-[calc(100vh-220px)] flex-col items-center px-4 pt-[4%] text-center text-[#F5F5F5]">
@@ -23,7 +25,7 @@ const Finish = ({
         {totalRiffs} of {totalRiffs} riffs completed
       </span>
 
-      <TypographyContent />
+      <TypographyContent headingFinishRef = {headingFinishRef}/>
 
       <article className="mt-8 w-full max-w-[700px] rounded-2xl border border-white/[0.05] bg-[#1A1A1A] px-8 py-8 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
         <p className="text-5xl font-extrabold leading-none text-[#F5F5F5] md:text-6xl">

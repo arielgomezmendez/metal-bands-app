@@ -4,7 +4,7 @@ type BandOptionsPropsType = {
   bandOptions: string[];
   correctBand: string;
   selectedBand: string | null;
-  setSelectedBand: React.Dispatch<React.SetStateAction<string | null>>;
+  setSelectedBand: (selectedBand: string) => void;
 };
 
 const BandOptions = ({
@@ -14,7 +14,11 @@ const BandOptions = ({
   setSelectedBand,
 }: BandOptionsPropsType) => {
   const handleSelectedTrack = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setSelectedBand(e.currentTarget.textContent?.trim() ?? "");
+    const selectedBand = e.currentTarget.textContent?.trim();
+
+    if (selectedBand) {
+      setSelectedBand(selectedBand);
+    }
   };
 
   return (

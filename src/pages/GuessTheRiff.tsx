@@ -19,6 +19,7 @@ export type DeezerTrack = {
 };
 
 const GuessTheRiff = () => {
+  const totalRiffs = 10;
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState<number | null>(null);
@@ -27,7 +28,8 @@ const GuessTheRiff = () => {
   const [bandOptions, setBandOptions] = useState<string[]>([]);
   const [correctBand, setCorrectBand] = useState<string>("");
   const [selectedBand, setSelectedBand] = useState<string | null>(null);
-  const [trackCounter, setTrackCounter] = useState<number>(0);
+  const [trackCounter, setTrackCounter] = useState<number>(1);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState<number>(0);
 
   const fetchDezeerData = async (): Promise<DeezerTrack[]> => {
     try {
@@ -41,8 +43,6 @@ const GuessTheRiff = () => {
         setSelectedTrack(randomTrack);
         setBandOptions(data.bandOptions);
         setCorrectBand(data.correctBand);
-
-        setTrackCounter((previousCounter) => previousCounter + 1);
       }
       return data;
     } catch (error) {
@@ -80,8 +80,20 @@ const GuessTheRiff = () => {
   };
   const handleNextRiff = () => {
     fetchDezeerData();
+    setTrackCounter((previousCounter) => previousCounter + 1);
     setSelectedBand(null);
     setIsPlaying(false);
+  };
+
+  const handleSelectedBand = (band: string) => {
+    setSelectedBand(band);
+
+    //Increment the correct bands count
+    if (band === correctBand) {
+      setCorrectAnswersCount(
+        (previousCorrectAnswers) => previousCorrectAnswers + 1,
+      );
+    }
   };
 
   const onPlayAgain = () => {
@@ -93,14 +105,19 @@ const GuessTheRiff = () => {
     setSelectedBand(null);
     setBandOptions([]);
     setCorrectBand("");
-    setTrackCounter(0);
+    setTrackCounter(1);
+    setCorrectAnswersCount(0);
     fetchDezeerData();
   };
 
   return (
     <>
-      {trackCounter == 5 ? (
-        <Finish onPlayAgain={onPlayAgain} />
+      {trackCounter > totalRiffs ? (
+        <Finish
+          correctAnswersCount={correctAnswersCount}
+          onPlayAgain={onPlayAgain}
+          totalRiffs={totalRiffs}
+        />
       ) : (
         <>
           <Typography
@@ -120,7 +137,7 @@ const GuessTheRiff = () => {
           >
             Listen to the track and choose the correct band
           </Typography>
-          <Counter trackCounter={trackCounter} />
+          <Counter trackCounter={trackCounter} totalRiffs={totalRiffs}/>
           <Card
             elevation={0}
             className="flex flex-col"
@@ -157,7 +174,7 @@ const GuessTheRiff = () => {
                 bandOptions={bandOptions}
                 correctBand={correctBand}
                 selectedBand={selectedBand}
-                setSelectedBand={setSelectedBand}
+                setSelectedBand={handleSelectedBand}
               />
               <Feedback selectedBand={selectedBand} correctBand={correctBand} />
               {/* Next Riff button */}
@@ -193,7 +210,7 @@ const GuessTheRiff = () => {
                     fontWeight: 700,
                   }}
                 >
-                  {trackCounter == 5 ? "Finish Game" : "Next Riff"}
+                  {trackCounter == totalRiffs ? "Finish Game" : "Next Riff"}
                 </Typography>
               </ButtonBase>
             </CardContent>

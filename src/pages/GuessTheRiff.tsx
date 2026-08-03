@@ -21,6 +21,8 @@ export type DeezerTrack = {
 const GuessTheRiff = () => {
   const totalRiffs = 10;
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const nextRiffButtonRef = useRef<HTMLButtonElement | null>(null);
+  const playButtonRef = useRef<HTMLButtonElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState<number | null>(null);
   const [timePorgress, setTimeProgress] = useState(0);
@@ -83,6 +85,7 @@ const GuessTheRiff = () => {
     setTrackCounter((previousCounter) => previousCounter + 1);
     setSelectedBand(null);
     setIsPlaying(false);
+    playButtonRef.current?.focus();
   };
 
   const handleSelectedBand = (band: string) => {
@@ -109,6 +112,12 @@ const GuessTheRiff = () => {
     setCorrectAnswersCount(0);
     fetchDezeerData();
   };
+
+  useEffect(() => {
+    if (selectedBand) {
+      nextRiffButtonRef.current?.focus();
+    }
+  }, [selectedBand]);
 
   return (
     <>
@@ -137,7 +146,7 @@ const GuessTheRiff = () => {
           >
             Listen to the track and choose the correct band
           </Typography>
-          <Counter trackCounter={trackCounter} totalRiffs={totalRiffs}/>
+          <Counter trackCounter={trackCounter} totalRiffs={totalRiffs} />
           <Card
             elevation={0}
             className="flex flex-col"
@@ -169,6 +178,7 @@ const GuessTheRiff = () => {
                 isPlaying={isPlaying}
                 duration={duration}
                 timePorgress={timePorgress}
+                playButtonRef = {playButtonRef}
               />
               <BandOptions
                 bandOptions={bandOptions}
@@ -181,6 +191,7 @@ const GuessTheRiff = () => {
               <ButtonBase
                 disabled={!selectedBand}
                 onClick={handleNextRiff}
+                ref={nextRiffButtonRef}
                 sx={{
                   borderRadius: "8px",
                   width: "60%",

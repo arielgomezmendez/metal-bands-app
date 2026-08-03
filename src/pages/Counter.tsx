@@ -5,9 +5,9 @@ type counterProps = {
 
 const Counter = ({trackCounter,totalRiffs}:counterProps) => {
   return (
-    <div className='bg-[#2e7d32] text-[#f5f5f5] text-xl w-36 mx-auto rounded-lg px-1 py-1 mb-8'>
+    <p className='bg-[#2e7d32] text-[#f5f5f5] text-xl w-40 mx-auto mb-8 rounded-lg px-2 py-2 '>
       {`Riff ${trackCounter} of ${totalRiffs}`}
-    </div>
+    </p>
   )
 }
 

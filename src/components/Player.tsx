@@ -12,6 +12,7 @@ type PlayerPropsType = {
   isPlaying: boolean;
   duration: number | null;
   timePorgress: number;
+  playButtonRef: React.RefObject<HTMLButtonElement | null>;
 };
 
 const Player = ({
@@ -24,11 +25,16 @@ const Player = ({
   isPlaying,
   duration,
   timePorgress,
+  playButtonRef,
 }: PlayerPropsType) => {
   return (
     <Box
       className="flex flex-row gap-2 mb-6 mx-auto p-4 rounded-2xl"
-      sx={{ width: "60%", backgroundColor: "rgba(255, 255, 255, 0.10)" , boxShadow:"0 0 30px rgba(183,28,28,0.4)"}}
+      sx={{
+        width: "60%",
+        backgroundColor: "rgba(255, 255, 255, 0.10)",
+        boxShadow: "0 0 30px rgba(183,28,28,0.4)",
+      }}
     >
       {selectedTrack?.preview && (
         <audio
@@ -43,10 +49,11 @@ const Player = ({
         onClick={handleAudio}
         disabled={!selectedTrack?.preview}
         aria-label={isPlaying ? "Pause preview" : "Play preview"}
+        ref={playButtonRef}
         sx={{
           width: { xs: 48, sm: 58 },
-          height: { xs: 48, sm:58  },
-          fontWeight:"bold",
+          height: { xs: 48, sm: 58 },
+          fontWeight: "bold",
           fontSize: "1rem",
           backgroundColor: "#D32F2F",
           color: "#fff",

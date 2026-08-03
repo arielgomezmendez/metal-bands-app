@@ -84,10 +84,23 @@ const GuessTheRiff = () => {
     setIsPlaying(false);
   };
 
+  const onPlayAgain = () => {
+    audioRef.current?.pause();
+    setIsPlaying(false);
+    setDuration(null);
+    setTimeProgress(0);
+    setSelectedTrack(null);
+    setSelectedBand(null);
+    setBandOptions([]);
+    setCorrectBand("");
+    setTrackCounter(0);
+    fetchDezeerData();
+  };
+
   return (
     <>
       {trackCounter == 5 ? (
-        <Finish />
+        <Finish onPlayAgain={onPlayAgain} />
       ) : (
         <>
           <Typography

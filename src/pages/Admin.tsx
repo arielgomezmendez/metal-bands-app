@@ -1,4 +1,23 @@
-import { Container, Typography } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import QueueMusicIcon from "@mui/icons-material/QueueMusic";
+import {
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+
+const bands = [
+  {
+    id: 1,
+    name: "Black Sabbath",
+  },
+];
 
 const Admin = () => {
   return (
@@ -42,17 +61,84 @@ const Admin = () => {
               name="bandName"
               type="text"
               placeholder="e.g. Iron Maiden"
-              className="h-14 w-full rounded border border-[#484b4d] bg-[#090a0a] px-5 text-lg text-[#f5f5f5]  transition placeholder:text-[#8d8d8d] "
+              className="h-14 w-full rounded border border-[#484b4d] bg-[#090a0a] px-5 text-lg text-[#f5f5f5] transition placeholder:text-[#8d8d8d]"
             />
 
             <button
               type="submit"
-              className=" h-14 rounded bg-[#e01822] px-6 text-base font-semibold text-white transition hover:bg-[#f11f2a] "
+              className="h-14 rounded bg-[#e01822] px-6 text-base font-semibold text-white transition hover:bg-[#f11f2a]"
             >
               Add Band
             </button>
           </div>
         </form>
+      </div>
+
+      <div className="mt-8 rounded-lg border border-[#2f3030] bg-[#0d0f0f] px-5 py-7 text-left shadow-[0_0_45px_rgba(0,0,0,0.35)] sm:px-7">
+        <Typography
+          component="h2"
+          variant="h5"
+          sx={{ fontWeight: 600 }}
+          color="#F5F5F5"
+        >
+          <QueueMusicIcon sx={{ color: "#ef1b24", fontSize: 32, marginRight:2 }} />
+          Bands List
+        </Typography>
+
+        <TableContainer>
+          <Table aria-label="Bands list">
+            <TableHead>
+              <TableRow sx={{ backgroundColor: "#1a1a1a" }}>
+                <TableCell sx={{ color: "#B0B0B0", fontWeight: 700 }}>
+                  ID
+                </TableCell>
+                <TableCell sx={{ color: "#B0B0B0", fontWeight: 700 }}>
+                  BAND NAME
+                </TableCell>
+                <TableCell sx={{ color: "#B0B0B0", fontWeight: 700 }}>
+                  ACTIONS
+                </TableCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {bands.map((band) => (
+                <TableRow
+                  key={band.id}
+                  sx={{
+                    borderBottom: "1px solid #242424",
+                    "&:last-child td": { borderBottom: 0 },
+                  }}
+                >
+                  <TableCell sx={{ color: "#F5F5F5", borderColor: "#242424" }}>
+                    {band.id}
+                  </TableCell>
+                  <TableCell sx={{ color: "#F5F5F5", borderColor: "#242424" }}>
+                    {band.name}
+                  </TableCell>
+                  <TableCell sx={{ borderColor: "#242424" }}>
+                    <div className="flex flex-wrap gap-3">
+                      <button
+                        type="button"
+                        className="flex items-center gap-2 rounded border border-[#f0b400] px-4 py-2 text-sm font-semibold uppercase text-[#f0b400] transition hover:bg-[#f0b400] hover:text-[#0d0f0f]"
+                      >
+                        <EditIcon sx={{ fontSize: 18 }} />
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className="flex items-center gap-2 rounded border border-[#ef1b24] px-4 py-2 text-sm font-semibold uppercase text-[#ef1b24] transition hover:bg-[#ef1b24] hover:text-white"
+                      >
+                        <DeleteIcon sx={{ fontSize: 18 }} />
+                        Delete
+                      </button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     </section>
   );

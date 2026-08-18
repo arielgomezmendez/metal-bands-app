@@ -8,7 +8,7 @@ import { getRandomItem } from "../helpers/arrayHelper";
 import Player from "../components/Player";
 import BandOptions from "../components/BandOptions";
 import Feedback from "../components/Feedback";
-import Counter from "./Counter";
+import Counter from "../components/Counter";
 import Finish from "../components/Finish";
 
 export type DeezerTrack = {

@@ -37,6 +37,11 @@ const Header = () => {
                 Contact
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/admin" style={getNavLinkStyle}>
+                Admin
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>

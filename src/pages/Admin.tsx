@@ -1,22 +1,32 @@
+import { Container, Typography } from "@mui/material";
+
 const Admin = () => {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-12 text-[#f5f5f5] sm:px-6 lg:px-8">
-      <div className="text-center">
-        <h1 className="text-4xl font-extrabold tracking-normal sm:text-5xl">
+      <Container>
+        <Typography
+          component="h1"
+          variant="h3"
+          gutterBottom
+          sx={{ fontWeight: "bold", marginTop: "4%" }}
+          color="#F5F5F5"
+        >
           Admin Panel
-        </h1>
-        <p className="mt-4 text-lg text-[#b0b0b0]">
+        </Typography>
+        <Typography component="p" color="#B0B0B0">
           Manage the bands used in the application.
-        </p>
-        <div className="mx-auto mt-5 h-0.5 w-20 bg-[#ef1b24]" />
-      </div>
+        </Typography>
+      </Container>
 
       <div className="mt-6 rounded-lg border border-[#2f3030] bg-[#0d0f0f] px-5 py-7 text-left shadow-[0_0_45px_rgba(0,0,0,0.35)] sm:px-7">
-        <div className="mb-8 flex items-center gap-4">
-          <h2 className="text-2xl font-extrabold tracking-normal text-[#f5f5f5]">
-            Add New Band
-          </h2>
-        </div>
+        <Typography
+          component="h2"
+          variant="h5"
+          sx={{ fontWeight: 600, marginBottom: 4 }}
+          color="#F5F5F5"
+        >
+          Add New Band
+        </Typography>
 
         <form className="space-y-4">
           <label
@@ -32,17 +42,14 @@ const Admin = () => {
               name="bandName"
               type="text"
               placeholder="e.g. Iron Maiden"
-              className="h-14 w-full rounded border border-[#484b4d] bg-[#090a0a] px-5 text-lg text-[#f5f5f5] outline-none transition placeholder:text-[#8d8d8d] focus:border-[#ef1b24] focus:ring-2 focus:ring-[#ef1b24]/35"
+              className="h-14 w-full rounded border border-[#484b4d] bg-[#090a0a] px-5 text-lg text-[#f5f5f5]  transition placeholder:text-[#8d8d8d] "
             />
 
             <button
               type="submit"
-              className="flex h-14 items-center justify-center gap-5 rounded bg-[#e01822] px-6 text-base font-extrabold uppercase text-white transition hover:bg-[#f11f2a] focus:outline-none focus:ring-2 focus:ring-[#ef1b24] focus:ring-offset-2 focus:ring-offset-[#0d0f0f]"
+              className=" h-14 rounded bg-[#e01822] px-6 text-base font-semibold text-white transition hover:bg-[#f11f2a] "
             >
-              <span>Add Band</span>
-              <span aria-hidden="true" className="text-3xl font-light leading-none">
-                +
-              </span>
+              Add Band
             </button>
           </div>
         </form>

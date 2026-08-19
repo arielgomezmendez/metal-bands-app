@@ -43,7 +43,7 @@ const SearchBand = ({ onSearch }: SearchProps) => {
 
       <button
         type="submit"
-        className="h-12 rounded bg-red-600 px-8 font-semibold text-white transition-colors hover:bg-red-700"
+        className="h-12 rounded bg-[#df3c39] px-8 font-semibold text-white transition-colors hover:bg-[#df3c39]"
       >
         Search
       </button>

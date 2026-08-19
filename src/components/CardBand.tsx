@@ -58,14 +58,19 @@ const CardBand = (props: CardBandProps) => {
       <CardActions style={{ backgroundColor: "#1A1A1A" }}>
         <Button
           component={RouterLink}
+          disableFocusRipple
           aria-label={`View ${(name ? name : "")} band details`}
           to={`/band/${encodeURIComponent(name ? name : "")}`}
           sx={{
             marginLeft: "5%",
             marginBottom: "5%",
-            background: "#E53935",
+            background: "#df3c39",
             color: "#F5F5F5",
             width: "90%",
+            "&.Mui-focusVisible": {
+              outline: "auto",
+              outlineOffset: "2px",
+            },
           }}
         >
           View band

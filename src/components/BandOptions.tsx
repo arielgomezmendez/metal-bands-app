@@ -57,20 +57,20 @@ const BandOptions = ({
                 hasAnswered && isCorrect
                   ? "#2e7d32"
                   : isIncorrect
-                    ? "#b30000"
+                    ? "#df3c39"
                     : "#111318",
 
               border: "2px solid #f5f5f5",
 
               boxShadow: isIncorrect
-                ? "0 0 16px rgba(255, 0, 0, 0.35)"
+                ? "0 0 16px rgba(223, 60, 57, 0.35)"
                 : "none",
 
               opacity: hasAnswered && !isCorrect && !isSelected ? 0.6 : 1,
 
               //...optionStyles,
               "&.Mui-focusVisible": {
-                outline: "3px solid #D32F2F",
+                outline: "3px solid #df3c39",
                 outlineOffset: "2px",
               },
             }}

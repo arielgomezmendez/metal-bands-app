@@ -29,7 +29,7 @@ const Album = ({ albumName, albumYear, albumImageUrl }: AlbumPropsType) => {
         <Skeleton
           variant="rectangular"
           sx={{
-            backgroundColor: "red",
+            backgroundColor: "#df3c39",
             borderRadius: "8px",
             width: "64px",
             height: "64px",

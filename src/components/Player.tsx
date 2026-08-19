@@ -56,10 +56,10 @@ const Player = ({
           height: { xs: 48, sm: 58 },
           fontWeight: "bold",
           fontSize: "1rem",
-          backgroundColor: "#D32F2F",
+          backgroundColor: "#df3c39",
           color: "#fff",
           "&:hover": {
-            backgroundColor: "#B71C1C",
+            backgroundColor: "#df3c39",
           },
           "&.Mui-disabled": {
             backgroundColor: "#555",
@@ -76,7 +76,7 @@ const Player = ({
           borderRadius: 4,
           backgroundColor: "#555",
           "& .MuiLinearProgress-bar": {
-            backgroundColor: "#D32F2F", //
+            backgroundColor: "#df3c39", //
           },
         }}
         value={duration ? (timePorgress / duration) * 100 : 0}

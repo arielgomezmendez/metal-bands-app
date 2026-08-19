@@ -52,7 +52,7 @@ const Finish = ({
 
         <div className="mx-auto flex w-full max-w-[420px] flex-col items-center gap-3">
           <button
-            className="h-10 w-3/5 rounded-lg bg-[#D32F2F] px-2 text-lg font-bold text-white transition-colors hover:bg-[#B71C1C] "
+            className="h-10 w-3/5 rounded-lg bg-[#df3c39] px-2 text-lg font-bold text-white transition-colors hover:bg-[#df3c39] "
             onClick={onPlayAgain}
             type="button"
           >

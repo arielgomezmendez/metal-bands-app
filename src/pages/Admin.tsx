@@ -66,7 +66,7 @@ const Admin = () => {
 
             <button
               type="submit"
-              className="h-14 rounded bg-[#e01822] px-6 text-base font-semibold text-white transition hover:bg-[#f11f2a]"
+              className="h-14 rounded bg-[#df3c39] px-6 text-base font-semibold text-white transition hover:bg-[#df3c39]"
             >
               Add Band
             </button>
@@ -81,7 +81,7 @@ const Admin = () => {
           sx={{ fontWeight: 600 }}
           color="#F5F5F5"
         >
-          <QueueMusicIcon sx={{ color: "#ef1b24", fontSize: 32, marginRight:2 }} />
+          <QueueMusicIcon sx={{ color: "#df3c39", fontSize: 32, marginRight:2 }} />
           Bands List
         </Typography>
 
@@ -127,7 +127,7 @@ const Admin = () => {
                       </button>
                       <button
                         type="button"
-                        className="flex items-center gap-2 rounded border border-[#ef1b24] px-4 py-2 text-sm font-semibold uppercase text-[#ef1b24] transition hover:bg-[#ef1b24] hover:text-white"
+                        className="flex items-center gap-2 rounded border border-[#df3c39] px-4 py-2 text-sm font-semibold uppercase text-[#df3c39] transition hover:bg-[#df3c39] hover:text-white"
                       >
                         <DeleteIcon sx={{ fontSize: 18 }} />
                         Delete

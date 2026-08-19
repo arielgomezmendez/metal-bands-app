@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
 const getNavLinkStyle = ({ isActive }: { isActive: boolean }) => ({
-  color: isActive ? "#d32f2f" : "#8A8A8A",
+  color: isActive ? "#df3c39" : "#8A8A8A",
 });
 
 const Header = () => {

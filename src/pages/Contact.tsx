@@ -31,7 +31,7 @@ const Contact = () => {
 
       <Typography component="p" sx={{ color: "#F5F5F5" }}>
         Email:{" "}
-        <Link href="mailto:contact@metalbands.app" color="#d32f2f">
+        <Link href="mailto:contact@metalbands.app" color="#df3c39">
           contact@metalbands.app
         </Link>
       </Typography>

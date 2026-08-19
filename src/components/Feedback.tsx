@@ -26,7 +26,7 @@ const Feedback = ({ selectedBand, correctBand }: FeedbackProps) => {
       <Typography
         component="p"
         sx={{
-          color: isCorrect ? "#4caf50" : "#d32f2f",
+          color: isCorrect ? "#4caf50" : "#df3c39",
           fontWeight: 900,
           fontStyle: "italic",
           letterSpacing: 4,

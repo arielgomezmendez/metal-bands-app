@@ -198,19 +198,19 @@ const GuessTheRiff = () => {
                   maxWidth: 420,
                   marginTop: 4,
                   height: 40,
-                  backgroundColor: "#D32F2F",
+                  backgroundColor: "#df3c39",
                   color: "#fff",
                   px: 1.8,
                   py: 1.8,
                   "&:hover": {
-                    backgroundColor: "#B71C1C",
+                    backgroundColor: "#df3c39",
                   },
                   "&.Mui-disabled": {
                     backgroundColor: "#555",
                     color: "#aaa",
                   },
                   "&.Mui-focusVisible": {
-                    outline: "3px solid #D32F2F",
+                    outline: "3px solid #df3c39",
                     outlineOffset: "2px",
                   },
                 }}

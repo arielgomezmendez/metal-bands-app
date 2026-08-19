@@ -51,6 +51,7 @@ const Player = ({
         disabled={!selectedTrack?.preview}
         aria-label={isPlaying ? "Pause preview" : "Play preview"}
         ref={playButtonRef}
+        disableFocusRipple
         sx={{
           width: { xs: 48, sm: 58 },
           height: { xs: 48, sm: 58 },
@@ -64,6 +65,10 @@ const Player = ({
           "&.Mui-disabled": {
             backgroundColor: "#555",
             color: "#aaa",
+          },
+          "&.Mui-focusVisible": {
+            outline: "auto",
+            outlineOffset: "2px",
           },
         }}
       >

@@ -192,6 +192,8 @@ const GuessTheRiff = () => {
                 disabled={!selectedBand}
                 onClick={handleNextRiff}
                 ref={nextRiffButtonRef}
+                disableTouchRipple
+                focusRipple={false}
                 sx={{
                   borderRadius: "8px",
                   width: "100%",
@@ -210,7 +212,7 @@ const GuessTheRiff = () => {
                     color: "#aaa",
                   },
                   "&.Mui-focusVisible": {
-                    outline: "3px solid #df3c39",
+                    outline: "auto",
                     outlineOffset: "2px",
                   },
                 }}

@@ -36,14 +36,14 @@ const SearchBand = ({ onSearch }: SearchProps) => {
         id="band-search"
         type="search"
         placeholder="Search band..."
-        className="h-12 w-full rounded border border-gray-600 bg-[#181818] px-4 text-white placeholder:text-gray-400"
+        className="h-12 w-full rounded border border-gray-600 bg-[#181818] px-4 text-white placeholder:text-[ #808080]"
         value={inputValue}
         onChange={handleChange}
       />
 
       <button
         type="submit"
-        className="h-12 rounded bg-[#df3c39] px-8 font-semibold text-white transition-colors hover:bg-[#df3c39]"
+        className="h-12 rounded bg-[#d82929] px-8 font-semibold text-white transition-colors hover:bg-[#df3c39] cursor-pointer"
       >
         Search
       </button>

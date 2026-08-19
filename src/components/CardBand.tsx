@@ -64,7 +64,7 @@ const CardBand = (props: CardBandProps) => {
           sx={{
             marginLeft: "5%",
             marginBottom: "5%",
-            background: "#df3c39",
+            background: "#d82929",
             color: "#F5F5F5",
             width: "90%",
             "&.Mui-focusVisible": {

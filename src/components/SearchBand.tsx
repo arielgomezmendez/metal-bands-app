@@ -25,7 +25,7 @@ const SearchBand = ({ onSearch }: SearchProps) => {
   return (
     <form
       role="search"
-      className="mx-auto flex w-86 mt-10 max-w-xl flex-col gap-3 sm:flex-row"
+      className="mx-auto mt-10 flex w-full max-w-xl flex-col gap-3 px-4 sm:flex-row"
       onSubmit={handleSubmit}
     >
       <label htmlFor="band-search" className="sr-only">
@@ -43,7 +43,7 @@ const SearchBand = ({ onSearch }: SearchProps) => {
 
       <button
         type="submit"
-        className="h-12 rounded bg-red-600 px-8 font-semibold text-white transition-colors hover:bg-red-700  "
+        className="h-12 rounded bg-red-600 px-8 font-semibold text-white transition-colors hover:bg-red-700"
       >
         Search
       </button>

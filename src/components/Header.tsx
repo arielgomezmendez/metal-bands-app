@@ -7,7 +7,7 @@ const getNavLinkStyle = ({ isActive }: { isActive: boolean }) => ({
 const Header = () => {
   return (
     <>
-      <header className="flex flex-row justify-between items-center px-4 py-3" style={{borderBottom:"#313231 solid 0.1px"}}>
+      <header className="flex flex-col items-start gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between" style={{borderBottom:"#313231 solid 0.1px"}}>
         <div className="header-left flex flex-row" style={{ color: "#F5F5F5" }}>
           <Link
             to="/"
@@ -17,9 +17,9 @@ const Header = () => {
             Metal Bands
           </Link>
         </div>
-        <nav className="header-nav" aria-label="Main navigation">
+        <nav className="header-nav w-full sm:w-auto" aria-label="Main navigation">
           <ul
-            className="nav-list flex flex-row gap-4"
+            className="nav-list flex flex-wrap gap-x-4 gap-y-2"
             style={{ color: "#8A8A8A" }}
           >
             <li>

@@ -32,7 +32,8 @@ const BandOptions = ({
           md: "1fr 1fr",
         },
         gap: 2,
-        width: "60%",
+        width: "100%",
+        maxWidth: 420,
       }}
     >
       {bandOptions.map((option) => {

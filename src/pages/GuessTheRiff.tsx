@@ -152,7 +152,7 @@ const GuessTheRiff = () => {
             className="flex flex-col"
             sx={{
               maxWidth: 700,
-              width: "100%",
+              width: "calc(100% - 2rem)",
               margin: "0 auto",
               backgroundColor: "#1A1A1A",
               borderRadius: 4,
@@ -162,9 +162,9 @@ const GuessTheRiff = () => {
           >
             <CardContent
               sx={{
-                padding: 4,
+                padding: { xs: 2, sm: 4 },
                 "&:last-child": {
-                  paddingBottom: 4,
+                  paddingBottom: { xs: 2, sm: 4 },
                 },
               }}
             >
@@ -194,7 +194,8 @@ const GuessTheRiff = () => {
                 ref={nextRiffButtonRef}
                 sx={{
                   borderRadius: "8px",
-                  width: "60%",
+                  width: "100%",
+                  maxWidth: 420,
                   marginTop: 4,
                   height: 40,
                   backgroundColor: "#D32F2F",

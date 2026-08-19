@@ -31,7 +31,8 @@ const Player = ({
     <Box
       className="flex flex-row gap-2 mb-6 mx-auto p-4 rounded-2xl"
       sx={{
-        width: "60%",
+        width: "100%",
+        maxWidth: 420,
         backgroundColor: "rgba(255, 255, 255, 0.10)",
         boxShadow: "0 0 30px rgba(183,28,28,0.4)",
       }}

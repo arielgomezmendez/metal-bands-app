@@ -11,6 +11,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 
 const bands = [
   {
@@ -20,6 +21,41 @@ const bands = [
 ];
 
 const Admin = () => {
+  const [bandName, setBandName] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setBandName(value);
+  };
+
+  const handleNameBandSubmit = async (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
+    event.preventDefault();
+    const name = bandName.trim();
+    if (!name) {
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/band-name", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error sending band name to backend");
+      }
+
+      setBandName("");
+    } catch (error) {
+      console.error("Error sending band name to backend:", error);
+    }
+  };
+
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-12 text-[#f5f5f5] sm:px-6 lg:px-8">
       <Container>
@@ -47,7 +83,7 @@ const Admin = () => {
           Add New Band
         </Typography>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleNameBandSubmit}>
           <label
             htmlFor="bandName"
             className="block text-lg font-bold text-[#b8b8b8]"
@@ -57,6 +93,9 @@ const Admin = () => {
 
           <div className="grid gap-5 md:grid-cols-[1fr_186px] md:items-center">
             <input
+              required
+              value={bandName}
+              onChange={handleChange}
               id="bandName"
               name="bandName"
               type="text"
@@ -66,7 +105,7 @@ const Admin = () => {
 
             <button
               type="submit"
-              className="h-14 rounded bg-[#df3c39] px-6 text-base font-semibold text-white transition hover:bg-[#df3c39]"
+              className="h-14 rounded bg-[#df3c39] px-6 text-base font-semibold text-white transition hover:bg-[#df3c39] cursor-pointer"
             >
               Add Band
             </button>
@@ -81,7 +120,9 @@ const Admin = () => {
           sx={{ fontWeight: 600 }}
           color="#F5F5F5"
         >
-          <QueueMusicIcon sx={{ color: "#df3c39", fontSize: 32, marginRight:2 }} />
+          <QueueMusicIcon
+            sx={{ color: "#df3c39", fontSize: 32, marginRight: 2 }}
+          />
           Bands List
         </Typography>
 
